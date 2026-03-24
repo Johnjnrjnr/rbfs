@@ -4,6 +4,8 @@ import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/Layo
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
 import {VerticalImageProps} from "@/react-bricks/bricks/custom/VerticalImageProps";
 import {useRef} from "react";
+import {VerticalVideoProps} from "@/react-bricks/bricks/custom/VerticalVideoProps";
+import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
 
 //=============================
 // Local Types
@@ -12,7 +14,7 @@ import {useRef} from "react";
 interface ScrollingPhotosDescription {
     title: types.TextValue,
     description: types.TextValue,
-    VerticalImages: types.RepeaterItems<VerticalImageProps>,
+    VerticalVideo: types.RepeaterItems<VerticalVideoProps>,
     titleWidth: number,
     textWidth: number,
     itemWidth: number,
@@ -25,7 +27,7 @@ interface ScrollingPhotosDescription {
 const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = ({
     title,
     description,
-    VerticalImages,
+    VerticalVideo,
     titleWidth,
     textWidth,
     itemWidth
@@ -49,32 +51,14 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
                                  width: `${titleWidth}px`
                              }}
                         >
-                            <Text
-                                propName="title"
-                                value={title}
-                                renderBlock={({children}) => (
-                                    <h1 className="text-7xl">
-                                        {children}
-                                    </h1>
-                                )}
-                                placeholder="Title..."
-
-                            />
+                            <TypographyRichTextExt propName="title" value={title}/>
                         </div>
                         <div className="quad-space-bottom"
                              style={{
                                  width: `${textWidth}px`
                              }}
                         >
-                            <Text
-                                propName="description"
-                                value={description}
-                                renderBlock={({children}) => (
-                                    <h1 className="text-3xl">
-                                        {children}
-                                    </h1>
-                                )}
-                            />
+                            <TypographyRichTextExt propName="description" value={description}/>
 
                         </div>
 
@@ -84,8 +68,8 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
                             gridAutoColumns: `${itemWidth}px`
                         }}>
                             <Repeater
-                                propName="VerticalImages"
-                                items={VerticalImages}
+                                propName="VerticalVideo"
+                                items={VerticalVideo}
                                 renderItemWrapper={(items) => (
                                     <div className="item">
                                         {items}
@@ -144,9 +128,9 @@ ScrollingPhotosDescriptionProp.schema = {
     ],
     repeaterItems: [
         {
-            name: 'VerticalImages',
-            itemType: "VerticalImage",
-            label: 'Vertical Images',
+            name: 'VerticalVideo',
+            itemType: "VerticalVideo",
+            label: 'Vertical Videos',
 
         }
     ]

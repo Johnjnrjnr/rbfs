@@ -2,6 +2,9 @@ import { Image, RichText, Text, types } from 'react-bricks/rsc'
 import {black} from "next/dist/lib/picocolors";
 import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
+import { typographySideEditProp } from '@/react-bricks/bricks/react-bricks-ui/typogrophy'
+import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
+
 
 //=============================
 // Local Types
@@ -14,6 +17,7 @@ interface HomeHeaderProps {
     highlightTextColor: { color: string; className: string }
     background: types.IImageSource
     width: number
+    typography: string
 }
 
 //=============================
@@ -24,7 +28,8 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                                                     title,
                                                     text,
                                                     background,
-                                                    width
+                                                    width,
+                                                    typography
                                                 }) => {
     return (
         <div className="dark:bg-gray-900"
@@ -42,95 +47,16 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
 
              }}>
             <div
-                className={highlightTextColor.className}
+                className={highlightTextColor.className + ' ' + typography}
                 style={{
-                    width: `${width}%`,
+                    width: `${width}px`,
                     marginLeft: "10rem",
                     marginBottom: "10rem"
                 }}
 
             >
-                <RichText
-                    propName="title"
-                    value={title}
-                    renderBlock={(props) => (
-                        <h1>
-                            {props.children}
-                        </h1>
-                    )}
-                    renderPlaceholder={(props) => (
-                        <h1 className="opacity-30"> {props.children}</h1>
-                    )}
-                    placeholder="Type a title..."
-                    allowedFeatures={[
-                        types.RichTextFeatures.Bold,
-                        types.RichTextFeatures.Italic,
-                        types.RichTextFeatures.Highlight,
-                        types.RichTextFeatures.Code,
-                        types.RichTextFeatures.Link,
-                        types.RichTextFeatures.Heading1,
-                        types.RichTextFeatures.Heading2
-                    ]}
-                    renderH1={(props) =>(
-                        <h1 className="text-4xl">
-                            {props.children}
-                        </h1>
-                    )}
-                    renderH2={(props) =>(
-                        <h2 className="text-xl">
-                            {props.children}
-                        </h2>
-                    )}
-                    renderCode={(props) => (
-                        <code className="text-sm py-1 px-2 bg-gray-200 dark:bg-gray-700 rounded-sm">
-                            {props.children}
-                        </code>
-                    )}
-                />
-                <RichText
-                    propName="text"
-                    value={text}
-                    renderBlock={(props) => (
-                        <h1 className="text-start dark:text-gray-500">
-                            {props.children}
-                        </h1>
-                    )}
-                    placeholder="Type a text..."
-                    allowedFeatures={[
-                        types.RichTextFeatures.Bold,
-                        types.RichTextFeatures.Italic,
-                        types.RichTextFeatures.Highlight,
-                        types.RichTextFeatures.Code,
-                        types.RichTextFeatures.Link,
-                        types.RichTextFeatures.Heading1,
-                        types.RichTextFeatures.Heading2
-                    ]}
-                    renderH1={(props) =>(
-                        <h1 className="text-4xl">
-                            {props.children}
-                        </h1>
-                    )}
-                    renderH2={(props) =>(
-                        <h2 className="text-xl">
-                            {props.children}
-                        </h2>
-                    )}
-                    renderCode={(props) => (
-                        <code className="text-sm py-1 px-2 bg-gray-200 dark:bg-gray-700 rounded-sm">
-                            {props.children}
-                        </code>
-                    )}
-                    renderLink={(props) => (
-                        <a
-                            href={props.href}
-                            target={props.target}
-                            rel={props.rel}
-                            className="text-sky-500 hover:text-sky-600 transition-colors"
-                        >
-                            {props.children}
-                        </a>
-                    )}
-                />
+                <TypographyRichTextExt propName="title" value={title}/>
+                <TypographyRichTextExt propName="text" value={text}/>
             </div>
         </div>
     )
@@ -151,6 +77,7 @@ HomeHeader.schema = {
 
     }),
     sideEditProps: [
+        typographySideEditProp,
         {
             name: 'padding',
             label: 'Padding',
@@ -175,7 +102,6 @@ HomeHeader.schema = {
             type: types.SideEditPropType.Number,
             rangeOptions: {
                 min: 5,
-                max: 100,
                 step: 5
 
             }

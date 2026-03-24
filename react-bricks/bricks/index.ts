@@ -9,6 +9,8 @@ import ScrollingPhotosDescriptionProp from "@/react-bricks/bricks/custom/Scrolli
 import VerticalImage from "@/react-bricks/bricks/custom/VerticalImageProps";
 import PictureIconArrayProp from "@/react-bricks/bricks/custom/PictureIconArray";
 import IconDisplay from "@/react-bricks/bricks/custom/IconDisplay";
+import VerticalVideo from "@/react-bricks/bricks/custom/VerticalVideoProps";
+import VerticalVideoClient from "@/react-bricks/bricks/custom/VerticalVideoClient";
 
 const bricks: types.Theme[] = [
   reactBricksUITheme, // React Bricks UI
@@ -17,7 +19,7 @@ const bricks: types.Theme[] = [
     categories: [
       {
         categoryName: 'Custom bricks',
-        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, PictureIconArrayProp, IconDisplay], // Custom Bricks
+        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay], // Custom Bricks
       },
     ],
   },

@@ -4,6 +4,7 @@ import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/Layo
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
 import {VerticalImageProps} from "@/react-bricks/bricks/custom/VerticalImageProps";
 import {IconDisplayProps} from "@/react-bricks/bricks/custom/IconDisplay";
+import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
 
 //=============================
 // Local Types
@@ -36,30 +37,12 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
 
     return (
         <div className="background-box start-margin end-margin quad-space-bottom quad-space-top">
-            <div className="text-6xl double-space-bottom"
-            style={
-                {
-                    width: `${titleWidth}px`
-                }
-            }
-            >
-                <Text
-                    propName="title"
-                    value={title}
-                />
+            <div>
+                <TypographyRichTextExt propName="title" value={title}/>
             </div>
 
-            <div className="text-2xl"
-                 style={
-                     {
-                         width: `${textWidth}px`
-                     }
-                 }
-            >
-                <Text
-                    propName="description"
-                    value={description}
-                />
+            <div>
+                <TypographyRichTextExt propName="description" value={description}/>
             </div>
             <div className="grid-3xAny quad-space-top"
             style={{
@@ -81,10 +64,7 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
 
             </div>
             <div className="text-4xl text-center quad-space-top">
-                <Text
-                    propName="iconTitle"
-                    value={iconTitle}
-                />
+                <TypographyRichTextExt propName="iconTitle" value={iconTitle}/>
             </div>
             <div className="iconDisplay">
                 <Repeater propName="IconDisplays" items={IconDisplays} />
