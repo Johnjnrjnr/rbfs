@@ -289,6 +289,13 @@ export const highlightTextColors = {
       className: 'text-gray-500 dark:text-white',
     },
   },
+  WHITE:{
+    label: tailwindColors.WHITE.label,
+    value: {
+      color: tailwindColors.WHITE.color500,
+      className: 'text-white-500 text-white',
+    }
+  },
   RED: {
     label: tailwindColors.RED.label,
     value: {

@@ -304,6 +304,7 @@ export const highlightTextEditProps: types.ISideEditProp<{
     display: types.OptionsDisplay.Color,
     options: [
       highlightTextColors.GRAY,
+      highlightTextColors.WHITE,
       highlightTextColors.RED,
       highlightTextColors.ORANGE,
       highlightTextColors.AMBER,
