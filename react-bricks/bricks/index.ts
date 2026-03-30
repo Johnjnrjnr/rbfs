@@ -14,6 +14,7 @@ import VerticalVideoClient from "@/react-bricks/bricks/custom/VerticalVideoClien
 import FullPageVideo from "@/react-bricks/bricks/custom/FullPageVideo";
 import FullPageVideoScroll from "@/react-bricks/bricks/custom/FullPageVideoScroll";
 import ImageRightTextLeft from "@/react-bricks/bricks/custom/ImageRightTextLeft";
+import StickyTitleWithContent from "@/react-bricks/bricks/custom/StickyTitleWithContent";
 
 const bricks: types.Theme[] = [
   reactBricksUITheme, // React Bricks UI
@@ -22,7 +23,7 @@ const bricks: types.Theme[] = [
     categories: [
       {
         categoryName: 'Custom bricks',
-        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft], // Custom Bricks
+        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft, StickyTitleWithContent], // Custom Bricks
       },
     ],
   },
