@@ -5,8 +5,9 @@ interface StickyOverlayTitleProps {
     title: types.TextValue
     items: types.RepeaterItems
     titleWidth: number
-    contentWidth: number
+    contentTopOffset: number
     topOffset: number
+    bottomOffset: number
     leftOffset: number
 }
 
@@ -14,13 +15,14 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                                                                       title,
                                                                       items,
                                                                       titleWidth,
-                                                                      contentWidth,
+                                                                      contentTopOffset,
                                                                       topOffset,
+                                                                        bottomOffset,
                                                                       leftOffset,
                                                                   }) => {
     return (
-        <section className="relative w-full bg-black text-white start-padding">
-            <div className="relative px-16 py-20">
+        <section className="relative w-full bg-black text-white start-padding end-padding ">
+            <div className="relative ">
                 <div
                     className="pointer-events-none absolute left-0 top-0 z-20 h-full"
                     style={{
@@ -35,6 +37,7 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                             left: `${leftOffset}px`,
                             width: `${titleWidth}px`,
                             marginLeft: `${leftOffset}px`,
+                            marginBottom: `${bottomOffset}px`,
                             paddingTop: `${topOffset}px`,
                         }}
                     >
@@ -47,17 +50,18 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                 </div>
 
                 <div
-                    className="relative z-10 ml-auto "
+                    className="relative z-10 "
                     style={{
                         width: `100%`,
-                        marginTop: `${topOffset/2}px`,
+                        paddingTop: `${contentTopOffset}px`,
+                        gap: "64px"
                     }}
                 >
                     <Repeater
                         propName="items"
                         items={items}
                         renderItemWrapper={(item) => (
-                            <div className="mb-16">
+                            <div className="pb-16">
                                 {item}
                             </div>
                         )}
@@ -76,6 +80,7 @@ StickyOverlayTitle.schema = {
         titleWidth: 420,
         contentWidth: 900,
         topOffset: 80,
+        bottomOffset: 60,
         leftOffset: 64,
         title: [
             {
@@ -96,8 +101,8 @@ StickyOverlayTitle.schema = {
             },
         },
         {
-            name: 'contentWidth',
-            label: 'Content Width',
+            name: 'contentTopOffset',
+            label: 'Content Top Offset',
             type: types.SideEditPropType.Number,
             rangeOptions: {
                 min: 300,
@@ -108,6 +113,16 @@ StickyOverlayTitle.schema = {
         {
             name: 'topOffset',
             label: 'Sticky Top Offset',
+            type: types.SideEditPropType.Number,
+            rangeOptions: {
+                min: 0,
+                max: 300,
+                step: 5,
+            },
+        },
+        {
+            name: 'bottomOffset',
+            label: 'Sticky Bottom Offset',
             type: types.SideEditPropType.Number,
             rangeOptions: {
                 min: 0,

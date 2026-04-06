@@ -240,7 +240,7 @@
 }
 
 .hard-shadow {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.9), 0 30px 60px 0 rgba(0, 0, 0, 0.9);
 }
 
 
