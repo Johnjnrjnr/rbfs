@@ -1,23 +1,73 @@
-import { types } from 'react-bricks/rsc'
+import { Image, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
 
 export interface ScrollCardProps {
     eyebrow: types.TextValue
     title: types.TextValue
     text: types.TextValue
+    hasPicture: boolean
+    picture: types.IImageSource
+    pictureWidth: number
+    pictureRounded: boolean
+    pictureBottomSpace: number
+    pictureTopSpace: number
+    pictureAspectRatio: number
+    picturePosition: 'top' | 'bottom'
+    pictureResizesCard: boolean
 }
 
 const ScrollCard: types.Brick<ScrollCardProps> = ({
                                                       eyebrow,
                                                       title,
                                                       text,
+                                                      hasPicture,
+                                                      picture,
+                                                      pictureWidth,
+                                                      pictureRounded,
+                                                      pictureBottomSpace,
+                                                      pictureTopSpace,
+                                                      pictureAspectRatio,
+                                                      picturePosition,
+                                                      pictureResizesCard,
                                                       ...rest
                                                   }) => {
+    const imageBlock = hasPicture ? (
+        <div
+            style={{
+                marginTop: picturePosition === 'bottom' ? `${pictureTopSpace}px` : '0px',
+                marginBottom: picturePosition === 'top' ? `${pictureBottomSpace}px` : '0px',
+            }}
+        >
+            <Image
+                propName="picture"
+                source={picture}
+                alt="Card image"
+                maxWidth={pictureWidth}
+                aspectRatio={pictureAspectRatio}
+                imageStyle={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    borderRadius: pictureRounded ? '20px' : '0px',
+                }}
+            />
+        </div>
+    ) : null
+
+    const cardWidth = pictureResizesCard
+        ? `${Math.max(280, Math.min(pictureWidth, 800))}px`
+        : undefined
+
     return (
         <article
             {...rest}
             className="w-[280px] shrink-0 rounded-[28px] bg-white p-6 md:w-[320px]"
+            style={{
+                width: cardWidth,
+            }}
         >
+            {picturePosition === 'top' && imageBlock}
+
             <div className="mb-4">
                 <TypographyRichTextExt
                     propName="eyebrow"
@@ -39,6 +89,8 @@ const ScrollCard: types.Brick<ScrollCardProps> = ({
                 value={text}
                 placeholder="Beschreibung"
             />
+
+            {picturePosition === 'bottom' && imageBlock}
         </article>
     )
 }
@@ -70,7 +122,108 @@ ScrollCard.schema = {
                 ],
             },
         ],
+        hasPicture: false,
+        pictureWidth: 320,
+        pictureRounded: true,
+        pictureBottomSpace: 16,
+        pictureTopSpace: 16,
+        pictureAspectRatio: 1.33,
+        picturePosition: 'top',
+        pictureResizesCard: false,
     }),
+    sideEditProps: [
+        {
+            groupName: 'Picture',
+            props: [
+                {
+                    name: 'hasPicture',
+                    label: 'Has Picture',
+                    type: types.SideEditPropType.Boolean,
+                },
+                {
+                    name: 'picture',
+                    label: 'Picture',
+                    type: types.SideEditPropType.Image,
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                },
+                {
+                    name: 'picturePosition',
+                    label: 'Picture Position',
+                    type: types.SideEditPropType.Select,
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                    selectOptions: {
+                        display: types.OptionsDisplay.Radio,
+                        options: [
+                            { label: 'Top', value: 'top' },
+                            { label: 'Bottom', value: 'bottom' },
+                        ],
+                    },
+                },
+                {
+                    name: 'pictureResizesCard',
+                    label: 'Picture Resizes Card',
+                    type: types.SideEditPropType.Boolean,
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                },
+                {
+                    name: 'pictureWidth',
+                    label: 'Picture Width',
+                    type: types.SideEditPropType.Number,
+                    rangeOptions: {
+                        min: 120,
+                        max: 800,
+                        step: 10,
+                    },
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                },
+                {
+                    name: 'pictureAspectRatio',
+                    label: 'Aspect Ratio',
+                    type: types.SideEditPropType.Select,
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                    selectOptions: {
+                        display: types.OptionsDisplay.Select,
+                        options: [
+                            { label: 'Square', value: 1 },
+                            { label: '4:3', value: 1.33 },
+                            { label: '3:4', value: 0.75 },
+                            { label: '16:9', value: 1.78 },
+                        ],
+                    },
+                },
+                {
+                    name: 'pictureRounded',
+                    label: 'Rounded Corners',
+                    type: types.SideEditPropType.Boolean,
+                    show: (props: ScrollCardProps) => props.hasPicture,
+                },
+                {
+                    name: 'pictureBottomSpace',
+                    label: 'Space Below Picture',
+                    type: types.SideEditPropType.Number,
+                    rangeOptions: {
+                        min: 0,
+                        max: 80,
+                        step: 4,
+                    },
+                    show: (props: ScrollCardProps) =>
+                        props.hasPicture && props.picturePosition === 'top',
+                },
+                {
+                    name: 'pictureTopSpace',
+                    label: 'Space Above Picture',
+                    type: types.SideEditPropType.Number,
+                    rangeOptions: {
+                        min: 0,
+                        max: 80,
+                        step: 4,
+                    },
+                    show: (props: ScrollCardProps) =>
+                        props.hasPicture && props.picturePosition === 'bottom',
+                },
+            ],
+        },
+    ],
 }
 
 export default ScrollCard

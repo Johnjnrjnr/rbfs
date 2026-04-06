@@ -78,37 +78,7 @@ HorizontalCards.schema = {
         kicker: 'Webauftritte und Webapplikationen',
         title: 'Warum Webseiten 2026\nkeine zweite Chance\nbekommen.',
         ctaLabel: 'Du möchtest mehr darüber wissen?',
-        ctaText: 'Mehr erfahren',
-        cards: [
-            {
-                type: 'scroll-card',
-                props: {
-                    eyebrow: [
-                        {
-                            type: 'p',
-                            children: [{ text: 'Erster Eindruck' }],
-                        },
-                    ],
-                    title: [
-                        {
-                            type: 'p',
-                            children: [{ text: 'Deine Webseite wird bewertet. Immer.' }],
-                        },
-                    ],
-                    text: [
-                        {
-                            type: 'p',
-                            children: [
-                                {
-                                    text: 'Besucher entscheiden in Sekunden, ob sie bleiben oder weiterlesen. Was unklar wirkt oder veraltet erscheint, verliert schnell Vertrauen und Aufmerksamkeit.',
-                                },
-                            ],
-                        },
-                    ],
-                },
-            },
-
-        ],
+        ctaText: 'Mehr erfahren'
     }),
     repeaterItems: [
         {

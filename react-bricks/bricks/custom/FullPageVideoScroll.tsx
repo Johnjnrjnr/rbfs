@@ -18,10 +18,7 @@ const schema: types.IBlockType<FullPageVideoScrollBrickProps> = {
     previewImageUrl: '/bricks-preview-images/pokemon.png',
     getDefaultProps: () => ({
         overlayOpacity: 0.2,
-        zoomOnScroll: true,
-        fadeOnScroll: true,
         scrollSpeed: 100,
-        smoothness: 0.08,
     }),
     sideEditProps: [
         {
@@ -35,16 +32,6 @@ const schema: types.IBlockType<FullPageVideoScrollBrickProps> = {
             },
         },
         {
-            name: 'zoomOnScroll',
-            label: 'Zoom On Scroll',
-            type: types.SideEditPropType.Boolean,
-        },
-        {
-            name: 'fadeOnScroll',
-            label: 'Fade On Scroll',
-            type: types.SideEditPropType.Boolean,
-        },
-        {
             name: 'scrollSpeed',
             label: 'Scroll Speed',
             type: types.SideEditPropType.Number,
@@ -54,16 +41,6 @@ const schema: types.IBlockType<FullPageVideoScrollBrickProps> = {
                 step: 5,
             },
         },
-        {
-            name: 'smoothness',
-            label: 'Smoothness',
-            type: types.SideEditPropType.Number,
-            rangeOptions: {
-                min: 0.02,
-                max: 0.3,
-                step: 0.01,
-            },
-        },
     ],
 }
 
@@ -71,8 +48,6 @@ export default wrapClientComponent<FullPageVideoScrollBrickProps>({
     ClientComponent: ({
                           video,
                           overlayOpacity,
-                          zoomOnScroll,
-                          fadeOnScroll,
         scrollSpeed,
         smoothness
                       }) => (
@@ -84,10 +59,7 @@ export default wrapClientComponent<FullPageVideoScrollBrickProps>({
                 <FullPageVideoScrollClient
                     videoUrl={file?.url}
                     overlayOpacity={overlayOpacity}
-                    zoomOnScroll={zoomOnScroll}
-                    fadeOnScroll={fadeOnScroll}
                     scrollSpeed = {scrollSpeed}
-                    smoothness={smoothness}
                 />
             )}
         />
