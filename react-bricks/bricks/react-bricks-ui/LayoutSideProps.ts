@@ -50,6 +50,7 @@ export const backgroundColorsEditProps: types.ISideEditProp<{
       bgColors.PURPLE,
       bgColors.FUCHSIA,
       bgColors.DARK_GRAY,
+      bgColors.BLACK,
     ],
   },
 }

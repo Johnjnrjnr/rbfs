@@ -1,5 +1,6 @@
 import { Repeater, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
+import {backgroundColorsEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 
 interface StickyOverlayTitleProps {
     title: types.TextValue
@@ -9,6 +10,8 @@ interface StickyOverlayTitleProps {
     topOffset: number
     bottomOffset: number
     leftOffset: number
+
+    backgroundColor: { color: string, className: string }
 }
 
 const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
@@ -19,9 +22,10 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                                                                       topOffset,
                                                                         bottomOffset,
                                                                       leftOffset,
+    backgroundColor
                                                                   }) => {
     return (
-        <section className="relative w-full bg-black text-white start-padding end-padding ">
+        <section className={"relative text-white start-padding end-padding " + backgroundColor?.className}>
             <div className="relative ">
                 <div
                     className="pointer-events-none absolute left-0 top-0 z-20 h-full"
@@ -140,6 +144,7 @@ StickyOverlayTitle.schema = {
                 step: 5,
             },
         },
+        backgroundColorsEditProps
     ],
     repeaterItems: [
         {

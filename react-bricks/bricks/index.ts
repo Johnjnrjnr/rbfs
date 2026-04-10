@@ -17,6 +17,8 @@ import ImageRightTextLeft from "@/react-bricks/bricks/custom/ImageRightTextLeft"
 import StickyTitleWithContent from "@/react-bricks/bricks/custom/StickyTitleWithContent";
 import ScrollCard from "@/react-bricks/bricks/custom/ScrollCard";
 import HorizontalCards from "@/react-bricks/bricks/custom/HorizontalCards";
+import ScrollingPicturesMarquee from "@/react-bricks/bricks/custom/ScrollingPicturesMarquee";
+import MarqueeImage from "@/react-bricks/bricks/custom/MarqueeImage";
 
 const bricks: types.Theme[] = [
   reactBricksUITheme, // React Bricks UI
@@ -25,7 +27,7 @@ const bricks: types.Theme[] = [
     categories: [
       {
         categoryName: 'Custom bricks',
-        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft, StickyTitleWithContent, ScrollCard, HorizontalCards], // Custom Bricks
+        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft, StickyTitleWithContent, ScrollCard, HorizontalCards, ScrollingPicturesMarquee, MarqueeImage], // Custom Bricks
       },
     ],
   },
