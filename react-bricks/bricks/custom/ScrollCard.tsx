@@ -61,7 +61,7 @@ const ScrollCard: types.Brick<ScrollCardProps> = ({
     return (
         <article
             {...rest}
-            className="w-[280px] shrink-0 rounded-[28px] bg-white p-6 md:w-[320px]"
+            className="w-[15vw] shrink-0 rounded-[28px] h-full bg-white p-6 md:w-[320px]"
             style={{
                 width: cardWidth,
             }}

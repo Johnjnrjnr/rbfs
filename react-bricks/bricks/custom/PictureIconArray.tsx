@@ -3,7 +3,7 @@ import {black} from "next/dist/lib/picocolors";
 import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
 import {VerticalImageProps} from "@/react-bricks/bricks/custom/VerticalImageProps";
-import {IconDisplayProps} from "@/react-bricks/bricks/custom/IconDisplay";
+import IconDisplay, {IconDisplayProps} from "@/react-bricks/bricks/custom/IconDisplay";
 import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
 
 //=============================
@@ -14,9 +14,12 @@ export interface PictureIconArray {
     textWidth: number;
     titleWidth: number;
     title: string,
+    kicker: types.TextValue
     description: string,
     VerticalImages: types.RepeaterItems<VerticalImageProps>,
+    personalIcon: types.IImageSource,
     IconDisplays: types.RepeaterItems<IconDisplayProps>,
+    buttonLinkText: types.TextValue,
     iconTitle: string
 }
 
@@ -28,8 +31,11 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
                                                             titleWidth,
                                                             description,
                                                             title,
+                                                                 personalIcon,
+    kicker,
                                                             VerticalImages,
                                                                  IconDisplays,
+    buttonLinkText,
                                                             iconTitle
                                                         }) => {
 
@@ -53,9 +59,9 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
                     propName="VerticalImages"
                     items={VerticalImages}
                     renderItemWrapper={(item) => (
-                        <div className="background-box item" style={{
+                        <div className="background-box item flex-col " style={{
                             backgroundColor: "var(--color-white)",
-                            padding: "10px"
+                            padding: "0px"
                         }}>
                             {item}
                         </div>
@@ -63,8 +69,11 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
                 />
 
             </div>
-            <div className="text-4xl text-center quad-space-top">
-                <TypographyRichTextExt propName="iconTitle" value={iconTitle}/>
+            <div className="flex flex-col justify-center justify-items-center">
+                <div className=" flex justify-center quad-space-top double-space-bottom">
+                    <IconDisplay title="personalIcon" image={personalIcon} pictureWidth={50} />
+                    <TypographyRichTextExt propName="iconTitle" value={iconTitle}/>
+                </div>
             </div>
             <div className="iconDisplay">
                 <Repeater propName="IconDisplays" items={IconDisplays} />

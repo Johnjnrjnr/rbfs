@@ -1,5 +1,6 @@
 import {
     Repeater,
+    isAdmin,
     types,
     wrapClientComponent,
 } from 'react-bricks/rsc'
@@ -56,23 +57,26 @@ const schema: types.IBlockType<ScrollingPicturesMarqueeProps> = {
     ],
 }
 
-export { schema }
-
 export default wrapClientComponent<ScrollingPicturesMarqueeProps>({
     ClientComponent: ({ images = [], rowHeight, gap, speed, rounded }) => {
         const imageUrls = images
             .map((item) => item.props?.image?.src)
             .filter((src): src is string => Boolean(src))
 
+        const showEditorImages = isAdmin()
+
         return (
             <div className="relative">
-                <div className="mb-6">
-                    <Repeater
-                        propName="images"
-                        items={images}
-                        renderItemWrapper={(item) => <div className="mb-3">{item}</div>}
-                    />
-                </div>
+                {showEditorImages ? (
+                    <div className="mb-6 rounded-2xl border border-dashed border-gray-300 p-4">
+                        <p className="mb-3 text-sm text-gray-500">Manage marquee images</p>
+                        <Repeater
+                            propName="images"
+                            items={images}
+                            renderItemWrapper={(item) => <div className="mb-3">{item}</div>}
+                        />
+                    </div>
+                ) : null}
 
                 <ScrollingPicturesMarqueeClient
                     images={imageUrls}

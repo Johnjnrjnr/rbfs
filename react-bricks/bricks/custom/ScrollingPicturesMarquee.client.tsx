@@ -23,13 +23,11 @@ const splitIntoRows = (images: string[]) => {
 const repeatRow = (row: string[]) => {
     if (row.length === 0) return []
 
-    // Make sure every row has enough items to feel continuous
     let expanded = [...row]
     while (expanded.length < 8) {
         expanded = [...expanded, ...row]
     }
 
-    // Duplicate once more so the animation can loop seamlessly
     return [...expanded, ...expanded]
 }
 
@@ -43,7 +41,6 @@ const ScrollingPicturesMarqueeClient: React.FC<
          rounded = true,
      }) => {
     const rows = splitIntoRows(images).map(repeatRow)
-
     const imageWidth = Math.round(rowHeight * 1.35)
 
     return (

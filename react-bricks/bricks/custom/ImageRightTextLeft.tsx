@@ -22,18 +22,12 @@ const ImageRightTextLeft: types.Brick<ImageRightTextLeftProps> = ({
                                                                       background,
                                                                   }) => {
     return (
-        <section className={`w-full ${background.className}`}>
+        <section className={`${background.className}`}>
             <div className="flex items-center justify-between">
                 <div
                     className="flex flex-col"
                     style={{ width: `${textWidth}px` }}
                 >
-                    <TypographyRichTextExt
-                        propName="title"
-                        value={title}
-                        placeholder="Write the title..."
-                    />
-
                     <TypographyRichTextExt
                         propName="description"
                         value={description}

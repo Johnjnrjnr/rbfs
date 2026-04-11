@@ -25,15 +25,14 @@ const IconDisplay: types.Brick<IconDisplayProps> = ({
 
 
     return (
-        <div>
-            <Text propName="Teext" value={title}></Text>
+        <div style={{width: pictureWidth +"px"}}>
 
             <Image
-                propName="Video"
-                alt="Video"
+                propName="image"
+                alt="image"
                 source={image}
                 aspectRatio={1}
-                maxWidth={pictureWidth}
+                imageStyle={{width: pictureWidth+"px"}}
 
             />
 

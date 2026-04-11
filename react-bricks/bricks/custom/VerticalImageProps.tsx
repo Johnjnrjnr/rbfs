@@ -2,6 +2,7 @@ import { Image, RichText, Text, types } from 'react-bricks/rsc'
 import {black} from "next/dist/lib/picocolors";
 import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
+import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
 
 //=============================
 // Local Types
@@ -10,10 +11,11 @@ import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors"
 export interface VerticalImageProps {
     image: types.IImageSource
     rounded: boolean
-    title: string
     picAspectRatio: number
     pictureWidth: number,
-    textSize: string
+    buttonLinkText: string,
+    kicker: string,
+    title: string,
 }
 
 //=============================
@@ -21,18 +23,31 @@ export interface VerticalImageProps {
 //=============================
 const VerticalImage: types.Brick<VerticalImageProps> = ({
     image,
-    title,
     rounded,
     picAspectRatio,
     pictureWidth,
-    textSize
+                                                            buttonLinkText,
+    kicker,
+    title
 }) => {
 
 
 
     return (
         <span>
-
+             <div className="ml-[36px] double-space-top">
+                                <TypographyRichTextExt propName="kicker" value={kicker} placeholder="Kicker.."/>
+                            </div>
+                            <div className="ml-[36px] mt-[9px]">
+                                <TypographyRichTextExt propName="title" value={title} placeholder="Title..."/>
+                            </div>
+                            <div className="rounded-full bg-blue-700 max-w-[40%] ml-[36px] px-4 py-2 double-space-bottom  single-space-top text-white align-middle">
+                                <TypographyRichTextExt
+                                    propName="buttonLinkText"
+                                    value={buttonLinkText}
+                                    placeholder="Button link text"
+                                />
+                            </div>
             <Image
                 propName="image"
                 alt="Video"
@@ -40,18 +55,6 @@ const VerticalImage: types.Brick<VerticalImageProps> = ({
                 aspectRatio={picAspectRatio}
                 maxWidth={pictureWidth}
                 imageStyle={rounded ? {borderRadius: "10px"} : {}}
-
-            />
-
-            <Text
-                propName="title"
-                value={title}
-                renderBlock={({children}) => (
-                    <h1 className={"single-space-top " + textSize}>
-                        {children}
-                    </h1>
-                )}
-                placeholder="Title..."
 
             />
 
@@ -109,29 +112,7 @@ VerticalImage.schema = {
                 min: 200,
             }
         },
-        {
-            name: 'textSize',
-            label: 'TextSize',
-            type: types.SideEditPropType.Select,
-            selectOptions: {
-                display: types.OptionsDisplay.Radio,
-                options: [
-                    {
-                        label: "Large",
-                        value: "text-4xl"
-                    },
-                    {
-                        label: "Medium",
-                        value: "text-2xl"
-                    },
-                    {
-                        label: "Small",
-                        value: ""
-                    }
 
-                ]
-            }
-        },
     ],
 }
 

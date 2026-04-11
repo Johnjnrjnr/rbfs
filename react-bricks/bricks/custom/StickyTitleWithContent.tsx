@@ -7,7 +7,8 @@ interface StickyOverlayTitleProps {
     items: types.RepeaterItems
     titleWidth: number
     contentTopOffset: number
-    topOffset: number
+    topPadding: number
+    topMargin: number
     bottomOffset: number
     leftOffset: number
 
@@ -19,7 +20,8 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                                                                       items,
                                                                       titleWidth,
                                                                       contentTopOffset,
-                                                                      topOffset,
+                                                                      topPadding,
+                                                                  topMargin,
                                                                         bottomOffset,
                                                                       leftOffset,
     backgroundColor
@@ -42,7 +44,8 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                             width: `${titleWidth}px`,
                             marginLeft: `${leftOffset}px`,
                             marginBottom: `${bottomOffset}px`,
-                            paddingTop: `${topOffset}px`,
+                            marginTop: `${topMargin}px`,
+                            paddingTop: `${topPadding}px`,
                         }}
                     >
                         <TypographyRichTextExt
@@ -115,8 +118,18 @@ StickyOverlayTitle.schema = {
             },
         },
         {
-            name: 'topOffset',
-            label: 'Sticky Top Offset',
+            name: 'topPadding',
+            label: 'Sticky Top Padding',
+            type: types.SideEditPropType.Number,
+            rangeOptions: {
+                min: 0,
+                max: 300,
+                step: 5,
+            },
+        },
+        {
+            name: 'topMargin',
+            label: 'Sticky Top Margin',
             type: types.SideEditPropType.Number,
             rangeOptions: {
                 min: 0,

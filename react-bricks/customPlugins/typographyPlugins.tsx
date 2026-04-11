@@ -141,11 +141,11 @@ const colorGrey = markPluginConstructor({
     icon: <MdCircle />,
 })
 
-const colorRed = markPluginConstructor({
-    name: 'color-red',
-    label: 'Red',
+const colorWhite = markPluginConstructor({
+    name: 'color-white',
+    label: 'White',
     render: (props: any) => (
-        <span {...props.attributes} className="text-red-500">
+        <span {...props.attributes} className="text-white">
       {props.children}
     </span>
     ),
@@ -217,6 +217,6 @@ export const typographyPlugins = [
 
     colorBlack,
     colorGrey,
-    colorRed,
+    colorWhite,
     colorGreen,
 ]

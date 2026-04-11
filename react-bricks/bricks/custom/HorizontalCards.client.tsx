@@ -68,12 +68,12 @@ const HorizontalCardsScroller: React.FC<HorizontalCardsScrollerProps> = ({
         <>
             <div
                 ref={scrollRef}
-                className="flex gap-6 overflow-x-auto scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+                className="flex gap-18 w-full scroll-smooth overflow-visible overflow-x-scroll pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden start-padding"
             >
                 {children}
             </div>
 
-            <div className="mt-4 flex justify-end gap-2">
+            <div className="mt-4 flex justify-end gap-2 end-padding">
                 <button
                     type="button"
                     onClick={scrollPrev}

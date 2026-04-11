@@ -11,7 +11,10 @@ interface FullPageVideoProps {
 
 const FullPageVideo: types.Brick<FullPageVideoProps> = ({ video, backgroundColor, padding, rounded }) => {
     return (
-        <section className={"relative w-full h-screen overflow-hidden " + backgroundColor?.className} >
+        <section className={"relative overflow-hidden " + backgroundColor?.className}
+        >
+            <div
+                style={{margin: padding + "px"}}>
             <File
                 propName="video"
                 source={video}
@@ -25,9 +28,7 @@ const FullPageVideo: types.Brick<FullPageVideoProps> = ({ video, backgroundColor
                             muted
                             playsInline
                             controls={false}
-                            className="absolute inset-0 w-full h-full object-cover"
-                            style={{margin: padding + "px",
-                                borderRadius: rounded ? "0px" : "15px"}}
+                            className={rounded ? "rounded" : ""}
                         />
                     ) : (
                         <div className="absolute inset-0 flex items-center justify-center text-white">
@@ -36,6 +37,7 @@ const FullPageVideo: types.Brick<FullPageVideoProps> = ({ video, backgroundColor
                     )
                 }
             />
+            </div>
         </section>
     )
 }
