@@ -32,10 +32,9 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                                                     typography
                                                 }) => {
     return (
-        <div className="dark:bg-gray-900"
+        <div className="dark:bg-gray-900 h-screen"
              style={{
                  display: "flex",
-                 height: "50rem",
                  backgroundImage: background?.src
                      ? `url(${background.src})`
                      : undefined,

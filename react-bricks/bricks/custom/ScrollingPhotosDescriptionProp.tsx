@@ -6,6 +6,7 @@ import {VerticalImageProps} from "@/react-bricks/bricks/custom/VerticalImageProp
 import {useRef} from "react";
 import {VerticalVideoProps} from "@/react-bricks/bricks/custom/VerticalVideoProps";
 import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
+import HorizontalCardsScroller from "@/react-bricks/bricks/custom/HorizontalCards.client";
 
 //=============================
 // Local Types
@@ -63,10 +64,8 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
                         </div>
 
                     </div>
-                    <div className="scroller start-padding">
-                        <div className="grid-container-row" style={{
-                            gridAutoColumns: `${itemWidth}px`
-                        }}>
+                    <div className="scroller">
+                        <HorizontalCardsScroller>
                             <Repeater
                                 propName="VerticalVideo"
                                 items={VerticalVideo}
@@ -76,9 +75,9 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
                                     </div>
                                 )}
                             />
-                            <div style={{width: "200px"}}>
+                            <div style={{minWidth: "200px"}}>
                             </div>
-                        </div>
+                        </HorizontalCardsScroller>
                     </div>
                 </div>
             </div>

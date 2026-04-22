@@ -7,6 +7,7 @@ import {
 import { RegisterComponent } from 'react-bricks/rsc/client'
 import ScrollingPicturesMarqueeClient from './ScrollingPicturesMarquee.client'
 import type { MarqueeImageProps } from './MarqueeImage'
+import {backgroundColorsEditProps, textGradientEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 
 interface ScrollingPicturesMarqueeProps {
     images?: types.RepeaterItems<MarqueeImageProps>

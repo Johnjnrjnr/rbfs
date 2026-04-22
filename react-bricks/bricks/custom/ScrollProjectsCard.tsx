@@ -1,5 +1,6 @@
 import { File, Image, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
+import {backgroundColorsEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 
 export interface ScrollProjectCardProps {
   title: types.TextValue
@@ -12,6 +13,7 @@ export interface ScrollProjectCardProps {
   buttonLinkText: types.TextValue
 
   showButtonRow: boolean
+  backgroundColor: { color: string; className: string }
 
   hasVideo: boolean
   video: types.IFileSource
@@ -41,6 +43,7 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
   buttonText,
   buttonLinkText,
   showButtonRow,
+    backgroundColor,
   hasVideo,
   video,
   videoWidth,
@@ -113,7 +116,7 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
   return (
     <article
       {...rest}
-      className="w-[18vw] h-full shrink-0 rounded-[28px] bg-white p-5 md:w-[420px]"
+      className={"w-[18vw] h-full shrink-0 rounded-[28px] p-5 md:w-[420px] " + backgroundColor?.className}
       style={{
         width: cardWidth,
       }}
@@ -229,6 +232,7 @@ ScrollProjectCard.schema = {
     buttonLinkText: 'Zur Webseite',
 
     showButtonRow: true,
+    backgroundColor: {color: "white", className: "bg-white"},
 
     hasVideo: true,
     videoWidth: 420,
@@ -254,6 +258,7 @@ ScrollProjectCard.schema = {
           label: 'Show Button Row',
           type: types.SideEditPropType.Boolean,
         },
+          backgroundColorsEditProps
       ],
     },
     {

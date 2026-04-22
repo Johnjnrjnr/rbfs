@@ -93,7 +93,7 @@ VerticalImage.schema = {
                     },
                     {
                         label: "Horizontal",
-                        value: 1.5
+                        value: 4/3
                     }
                 ]
             }

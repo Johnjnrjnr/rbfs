@@ -69,6 +69,7 @@ const VerticalVideoClient: React.FC<VerticalVideoProps> = ({
                          transform: 'translateZ(0)',
                          backfaceVisibility: 'hidden',
                          WebkitBackfaceVisibility: 'hidden',
+                         marginBottom: "23px"
                      }}>
                     {videoUrl ? (
                         <video

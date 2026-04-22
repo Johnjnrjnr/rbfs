@@ -28,7 +28,8 @@ const FullPageVideo: types.Brick<FullPageVideoProps> = ({ video, backgroundColor
                             muted
                             playsInline
                             controls={false}
-                            className={rounded ? "rounded" : ""}
+                            className={rounded ? "rounded-corner" : " "}
+                            style={{borderRadius: rounded ? "15px" : "0px"}}
                         />
                     ) : (
                         <div className="absolute inset-0 flex items-center justify-center text-white">

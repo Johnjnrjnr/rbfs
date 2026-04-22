@@ -44,7 +44,7 @@ const ScrollingPicturesMarqueeClient: React.FC<
     const imageWidth = Math.round(rowHeight * 1.35)
 
     return (
-        <section className="w-full overflow-hidden bg-white py-8">
+        <section className="w-full overflow-hidden bg-white py-8 ">
             <style>{`
         @keyframes marqueeLeft {
           from { transform: translateX(0); }
