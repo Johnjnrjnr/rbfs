@@ -1,6 +1,7 @@
 import { Repeater, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
 import {backgroundColorsEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
+import React from "react";
 
 interface StickyOverlayTitleProps {
     title: types.TextValue
@@ -28,25 +29,25 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                                                                   }) => {
     return (
         <section className={"relative text-white start-padding end-padding " + backgroundColor?.className}>
+
+            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
             <div className="relative ">
                 <div
-                    className="pointer-events-none absolute left-0 top-0 z-20 h-full"
+                    className="pointer-events-none absolute left-0 top-0 h-full w-full md: w-[var(--full-width)] "
                     style={{
-                        width: `${titleWidth + leftOffset}px`,
-                    }}
+                        "--full-width": `${Number(titleWidth) + Number(leftOffset)}px`,
+                    } as React.CSSProperties }
                 >
                     <div
-                        className="pointer-events-auto bg-black hard-shadow"
+                        className="pointer-events-auto bg-black sticky-title hard-shadow pl-[var(--left-margin)] w-[var(--title-width)] mt-[var(--top-margin)] pt-[var(--top-padding)] mb-[270px]"
                         style={{
-                            position: 'sticky',
-                            top: `0px`,
-                            left: `${leftOffset}px`,
-                            width: `${titleWidth}px`,
-                            marginLeft: `${leftOffset}px`,
-                            marginBottom: `${bottomOffset}px`,
-                            marginTop: `${topMargin}px`,
-                            paddingTop: `${topPadding}px`,
-                        }}
+                            "--left-offset": `${leftOffset}px`,
+                            "--title-width": `${titleWidth}px`,
+                            "--left-margin": `${leftOffset}px`,
+                            "--bottom-offset": `${bottomOffset}px`,
+                            "--top-margin": `${topMargin}px`,
+                            "--top-padding": `${topPadding}px`,
+                        } as React.CSSProperties }
                     >
                         <TypographyRichTextExt
                             propName="title"
@@ -57,18 +58,17 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                 </div>
 
                 <div
-                    className="relative z-10 "
+                    className="relative z-10 w-full"
                     style={{
-                        width: `100%`,
                         paddingTop: `${contentTopOffset}px`,
-                        gap: "64px"
+                        gap: "270px"
                     }}
                 >
                     <Repeater
                         propName="items"
                         items={items}
                         renderItemWrapper={(item) => (
-                            <div className="pb-16">
+                            <div className="pb-[270px]">
                                 {item}
                             </div>
                         )}

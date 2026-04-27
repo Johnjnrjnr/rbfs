@@ -8,7 +8,7 @@ import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors"
 //=============================
 
 export interface IconDisplayProps {
-    image: types.IImageSource,
+    image?: types.IImageSource,
     pictureWidth: number,
     title: string,
 }
@@ -25,7 +25,9 @@ const IconDisplay: types.Brick<IconDisplayProps> = ({
 
 
     return (
-        <div style={{width: pictureWidth +"px"}}>
+        <div
+            className="w-[20px] md:w-[var(--width)]"
+            style={{"--width": pictureWidth +"px"} as React.CSSProperties }>
 
             <Image
                 propName="image"

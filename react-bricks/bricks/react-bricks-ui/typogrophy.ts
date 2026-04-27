@@ -4,6 +4,7 @@ export const typographyOptions = [
     { label: 'Display 1', value: 'display-1' },
     { label: 'Display 2', value: 'display-2' },
     { label: 'Display 3', value: 'display-3' },
+    { label: 'Display 4', value: 'display-4' },
     { label: 'Header 1', value: 'header-1' },
     { label: 'Header 2', value: 'header-2' },
     { label: 'Header 3', value: 'header-3' },

@@ -679,7 +679,7 @@ export const buttonColors = {
     label: tailwindColors.BLUE.label,
     value: {
       color: tailwindColors.BLUE.color500,
-      classNameSolid: 'bg-blue-500 text-white hover:bg-blue-600',
+      classNameSolid: 'bg-[#0400FF]',
       classNameOutline:
         'border border-blue-600 text-blue-600 dark:border-white dark:text-white',
     },

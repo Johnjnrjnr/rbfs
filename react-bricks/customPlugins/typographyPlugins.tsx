@@ -8,6 +8,7 @@ import {
     MdFilter1,
     MdFilter2,
     MdFilter3,
+    MdFilter4,
     MdLooksOne,
     MdLooksTwo,
     MdLooks3,
@@ -52,6 +53,18 @@ const display3 = blockPluginConstructor({
     ),
     icon: <MdFilter3 />,
 })
+
+const display4 = blockPluginConstructor({
+    name: 'display-4',
+    label: 'Display 4',
+    render: (props: any) => (
+        <div {...props.attributes} className="display-4">
+            {props.children}
+        </div>
+    ),
+    icon: <MdFilter4 />,
+})
+
 
 const header1 = blockPluginConstructor({
     name: 'header-1',
@@ -204,6 +217,7 @@ export const typographyPlugins = [
     display1,
     display2,
     display3,
+    display4,
     header1,
     header2,
     header3,

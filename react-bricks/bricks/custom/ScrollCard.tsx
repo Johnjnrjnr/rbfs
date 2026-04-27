@@ -55,20 +55,20 @@ const ScrollCard: types.Brick<ScrollCardProps> = ({
     ) : null
 
     const cardWidth = pictureResizesCard
-        ? `${Math.max(280, Math.min(pictureWidth, 800))}px`
+        ? `${Math.max(409, Math.min(pictureWidth, 800))}px`
         : undefined
 
     return (
         <article
             {...rest}
-            className="w-[15vw] shrink-0 rounded-[28px] h-full bg-white p-6 md:w-[320px]"
+            className="w-[409px] shrink-0 rounded-[28px] h-full bg-white px-[38px] py-[34px]"
             style={{
                 width: cardWidth,
             }}
         >
             {picturePosition === 'top' && imageBlock}
 
-            <div className="mb-4">
+            <div className="mb-[18px]">
                 <TypographyRichTextExt
                     propName="eyebrow"
                     value={eyebrow}

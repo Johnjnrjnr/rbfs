@@ -63,8 +63,8 @@ const VerticalVideoClient: React.FC<VerticalVideoProps> = ({
 
     return (
         <div className="block">
-            <div className="w-full flex justify-center">
-                <div className="relative w-[409px] h-[512px] overflow-hidden rounded-2xl bg-black"
+            <div className="w-full flex">
+                <div className="relative w-[300px] h-[400px] md:w-[20vw] md:h-[30vw] overflow-hidden rounded-2xl bg-black"
                      style={{
                          transform: 'translateZ(0)',
                          backfaceVisibility: 'hidden',

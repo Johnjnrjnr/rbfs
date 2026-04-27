@@ -4,10 +4,12 @@ import React, { useEffect, useRef, useState } from 'react'
 
 interface HorizontalCardsScrollerProps {
     children: React.ReactNode
+    backgroundColor: {color: string, className: string}
 }
 
 const HorizontalCardsScroller: React.FC<HorizontalCardsScrollerProps> = ({
                                                                              children,
+    backgroundColor
                                                                          }) => {
     const scrollRef = useRef<HTMLDivElement | null>(null)
     const [canScrollLeft, setCanScrollLeft] = useState(false)
@@ -68,18 +70,18 @@ const HorizontalCardsScroller: React.FC<HorizontalCardsScrollerProps> = ({
         <>
             <div
                 ref={scrollRef}
-                className="flex gap-18 w-full scroll-smooth overflow-visible overflow-x-scroll pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden start-padding"
+                className="flex gap-[18px] w-full scroll-smooth overflow-visible overflow-x-scroll pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden start-padding end-padding"
             >
                 {children}
             </div>
 
-            <div className="mt-4 flex justify-end gap-2 end-padding">
+            <div className="mt-4 flex justify-end gap-2 pr-[300px]">
                 <button
                     type="button"
                     onClick={scrollPrev}
                     disabled={!canScrollLeft}
                     aria-label="Previous card"
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-700 transition disabled:cursor-not-allowed disabled:opacity-40"
+                    className={"flex h-9 w-9 items-center justify-center rounded-full text-neutral-700 transition disabled:cursor-not-allowed disabled:opacity-40 " + backgroundColor?.className + " " + backgroundColor?.className === "bg-black" ? " text-white" : ""}
                 >
                     ←
                 </button>
@@ -88,7 +90,7 @@ const HorizontalCardsScroller: React.FC<HorizontalCardsScrollerProps> = ({
                     onClick={scrollNext}
                     disabled={!canScrollRight}
                     aria-label="Next card"
-                    className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-neutral-700 transition disabled:cursor-not-allowed disabled:opacity-40"
+                    className={"flex h-9 w-9 items-center justify-center rounded-full text-neutral-700 transition disabled:cursor-not-allowed disabled:opacity-40 " + backgroundColor?.className + " " + backgroundColor?.className === "bg-black" ? " text-white" : ""}
                 >
                     →
                 </button>

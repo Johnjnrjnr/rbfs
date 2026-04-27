@@ -44,7 +44,7 @@ const ScrollingPicturesMarqueeClient: React.FC<
     const imageWidth = Math.round(rowHeight * 1.35)
 
     return (
-        <section className="w-full overflow-hidden bg-white py-8 ">
+        <section className="w-full overflow-hidden bg-[linear-gradient(180deg,#FFFFFF,#474747,#000000_100%)]  ">
             <style>{`
         @keyframes marqueeLeft {
           from { transform: translateX(0); }
@@ -57,7 +57,7 @@ const ScrollingPicturesMarqueeClient: React.FC<
         }
       `}</style>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 ">
                 {rows.map((row, rowIndex) => {
                     if (row.length === 0) return null
 

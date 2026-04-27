@@ -23,10 +23,10 @@ const ImageRightTextLeft: types.Brick<ImageRightTextLeftProps> = ({
                                                                   }) => {
     return (
         <section className={`${background.className}`}>
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between flex-col-rev-mobile">
                 <div
-                    className="flex flex-col"
-                    style={{ width: `${textWidth}px` }}
+                    className="flex flex-col flex-end-mobile md:w-[var(--text-width)]"
+                    style={{ "--text-width": `${textWidth}px` } as React.CSSProperties}
                 >
                     <TypographyRichTextExt
                         propName="description"
@@ -35,7 +35,9 @@ const ImageRightTextLeft: types.Brick<ImageRightTextLeftProps> = ({
                     />
                 </div>
 
-                <div style={{ width: `${imageWidth}px` }} className="shrink-0">
+                <div
+                    className=" md:w-[var(--image-width)]"
+                    style={{ "--image-width": `${imageWidth}px` } as React.CSSProperties}>
                     <Image
                         propName="image"
                         source={image}

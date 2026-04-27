@@ -18,7 +18,7 @@ export default function TypographyRichTextExt({
             propName={propName}
             value={value}
             placeholder={placeholder}
-            renderBlock={({ children }) => <p className="text-1">{children}</p>}
+            renderBlock={({ children }) => <p className="text-1 min-w-[20px] min-h-[10px]">{children}</p>}
             plugins={typographyPlugins}
         />
     )

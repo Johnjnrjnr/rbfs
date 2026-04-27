@@ -116,14 +116,14 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
   return (
     <article
       {...rest}
-      className={"w-[18vw] h-full shrink-0 rounded-[28px] p-5 md:w-[420px] " + backgroundColor?.className}
+      className={"w-[380px] rounded-[28px] p-5 md:w-[var(--card-width)] " + backgroundColor?.className}
       style={{
-        width: cardWidth,
-      }}
+        "--card-width": cardWidth,
+      } as React.CSSProperties}
     >
       {mediaBlock}
 
-      <div className="mb-6 flex items-start justify-between gap-4 pl-[20px] pr[20px]">
+      <div className="mb-6 flex h-full items-start justify-between gap-4 pl-[20px] pr[20px]">
         <div className="min-w-0 flex-1">
           <TypographyRichTextExt
             propName="title"
@@ -151,7 +151,7 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
         ) : null}
       </div>
 
-      <div className="mb-6 grid grid-cols-[1fr_auto] gap-6 pl-[20px] pr-[20px]">
+      <div className="mb-6 grid grid-row-rev md:grid-cols-[1fr_auto] gap-6 pl-[20px] pr-[20px]">
         <div>
           <TypographyRichTextExt
             propName="description"
@@ -190,10 +190,10 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
       </div>
 
       {showButtonRow ? (
-          <div className="grow flex-row justify-self-start self-end">
+          <div className=" justify-self-end self-end items-end align-self-end">
             <div className="flex justify-self-end-safe gap-3 ml-[20px]">
-              <div className="rounded-full grid grid-cols-2 gap-10 justify-center content-center bg-neutral-500 px-4 py-2 text-white">
-                <div className="flex flex-col justify-center">
+              <div className="rounded-full grid grid-cols-2 gap-10 justify-between content-center bg-neutral-500 pl-4 pr-1 py-1 text-white">
+                <div className="flex flex-col justify-center ">
                   <TypographyRichTextExt
                     propName="buttonText"
                     value={buttonText}
@@ -201,7 +201,7 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
                   />
                 </div>
 
-                <div className="rounded-full bg-blue-700 px-4 py-2 text-white align-middle">
+                <div className="rounded-full bg-[#0400FF] px-4 py-2 text-white align-middle">
                   <TypographyRichTextExt
                       propName="buttonLinkText"
                       value={buttonLinkText}

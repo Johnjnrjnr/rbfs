@@ -9,6 +9,7 @@ export interface ScrollVideoCardProps {
     hasVideo: boolean
     video: types.IFileSource
     videoWidth: number
+    textWidth: number
     videoRounded: boolean
     videoBottomSpace: number
     videoTopSpace: number
@@ -29,6 +30,7 @@ const ScrollVideoCard: types.Brick<ScrollVideoCardProps> = ({
                                                                 hasVideo,
                                                                 video,
                                                                 videoWidth,
+    textWidth,
                                                                 videoRounded,
                                                                 videoBottomSpace,
                                                                 videoTopSpace,
@@ -93,19 +95,20 @@ const ScrollVideoCard: types.Brick<ScrollVideoCardProps> = ({
     ) : null
 
     const cardWidth = videoResizesCard
-        ? `${Math.max(280, Math.min(videoWidth, 900))}px`
+        ? Math.max(280, Math.min(videoWidth, 900))
         : undefined
 
     return (
         <article
             {...rest}
-            className="w-[15vw] shrink-0 rounded-[28px] h-full bg-black p-6 text-white md:w-[320px]"
+            className="w-[380px] shrink-0 rounded-[28px] h-full bg-black text-white md:w-[var(--card-width)]"
             style={{
-                width: cardWidth,
-            }}
+                "--card-width": cardWidth + "px"
+             } as React.CSSProperties}
         >
             {videoPosition === 'top' && mediaBlock}
-            <div style={{marginLeft: "20px"}}>
+            <div className="max-w-[var(--text-width)] ml-[5px] md:ml-[20px]"
+            style={{"--text-width": textWidth+"px"} as React.CSSProperties}>
             <TypographyRichTextExt
                 propName="text"
                 value={text}
@@ -191,6 +194,17 @@ ScrollVideoCard.schema = {
                 {
                     name: 'videoWidth',
                     label: 'Video Width',
+                    type: types.SideEditPropType.Number,
+                    rangeOptions: {
+                        min: 120,
+                        max: 900,
+                        step: 10,
+                    },
+                    show: (props: ScrollVideoCardProps) => props.hasVideo,
+                },
+                {
+                    name: 'textWidth',
+                    label: 'Text Width',
                     type: types.SideEditPropType.Number,
                     rangeOptions: {
                         min: 120,

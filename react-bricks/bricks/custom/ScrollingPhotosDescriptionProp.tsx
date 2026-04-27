@@ -40,42 +40,34 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
 
     return (
 
-        <div className="scrolling-photos-container bg-white block-container">
-            <div className="spacer">
+        <div className="scrolling-photos-container bg-[#F5F5F7] block-container pl-[54px]">
+            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
 
-            </div>
-
-                <div>
-                    <div className="start-padding">
-                        <div className="single-space-bottom"
-                             style={{
-                                 width: `${titleWidth}px`
-                             }}
-                        >
+                <div className="md:ml-[54px]+">
+                    <div className="start-padding end-padding">
+                        <div className="md:w-[var(--title-width)] single-space-bottom"
+                             style={{"--title-width": titleWidth +"px"} as React.CSSProperties}>
                             <TypographyRichTextExt propName="title" value={title}/>
                         </div>
-                        <div className="quad-space-bottom"
-                             style={{
-                                 width: `${textWidth}px`
-                             }}
-                        >
+                        <div className="md:w-[var(--text-width)] quad-space-bottom"
+                             style={{"--text-width": textWidth + "px"} as React.CSSProperties}>
                             <TypographyRichTextExt propName="description" value={description}/>
 
                         </div>
 
                     </div>
                     <div className="scroller">
-                        <HorizontalCardsScroller>
+                        <HorizontalCardsScroller backgroundColor={{color: "white",className: "bg-white"}}>
                             <Repeater
                                 propName="VerticalVideo"
                                 items={VerticalVideo}
                                 renderItemWrapper={(items) => (
-                                    <div className="item">
+                                    <div className="item data-scroll-card">
                                         {items}
                                     </div>
                                 )}
                             />
-                            <div style={{minWidth: "200px"}}>
+                            <div className=" min-w-[20px] md:min-w-[200px]">
                             </div>
                         </HorizontalCardsScroller>
                     </div>

@@ -3,7 +3,7 @@ import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextE
 import HorizontalCardsScroller from './HorizontalCards.client'
 import type { ScrollCardProps } from './ScrollCard'
 import type { ScrollVideoCardProps } from '@/react-bricks/bricks/custom/ScrollVideoCard'
-import type { ScrollProjectCardProps } from '@/react-bricks/bricks/custom/ScrollProjectCard'
+import type { ScrollProjectCardProps } from '@/react-bricks/bricks/custom/ScrollProjectsCard'
 import {
     backgroundColorsEditProps,
     buttonColorsEditProps,
@@ -15,6 +15,8 @@ interface HorizontalCardsProps {
     ctaLabel: types.TextValue
     ctaText: types.TextValue
     ctaDescription: types.TextValue
+    titleWidth: number
+    CtaWidth: number
     showCta: boolean
     showCtaDescription: boolean
     cards: types.RepeaterItems<
@@ -35,6 +37,8 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                                                 ctaText,
                                                                 ctaDescription,
                                                                 showCta,
+                                                                titleWidth,
+                                                                CtaWidth,
                                                                 showCtaDescription,
                                                                 cards,
                                                                 backgroundColor,
@@ -47,36 +51,74 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                 backgroundColor?.className
             }
         >
-            <div className="pt-[180px] pb-[18px]">
+            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+            <div className=" pt-[80px] md:pt-[180px] pb-[72px]">
 
-                {showCta ? (<div className="mb-10 flex flex-col gap-8 lg:mb-14 start-padding end-padding ">
-                    <div className="max-w-[500px]">
-                        <TypographyRichTextExt
-                            propName="kicker"
-                            value={kicker}
-                            placeholder="Kicker"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                        <div className="flex-2">
+                {showCta ? (<div className="mb-[90px] flex flex-col gap-8 lg:mb-14 start-padding end-padding ">
+                        <div className="max-w-[500px]">
                             <TypographyRichTextExt
-                                propName="title"
-                                value={title}
-                                placeholder="Title"
+                                propName="kicker"
+                                value={kicker}
+                                placeholder="Kicker"
                             />
                         </div>
 
-                        {showCtaDescription ? (
-                            <div className="flex-1 text-left ">
+                        <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                            <div className="md:w-[var(--title-width)]"
+                                 style={{"--title-width": titleWidth + "px"} as React.CSSProperties}>
                                 <TypographyRichTextExt
-                                    propName="ctaDescription"
-                                    value={ctaDescription}
-                                    placeholder="Description"
+                                    propName="title"
+                                    value={title}
+                                    placeholder="Title"
                                 />
-                                <div className="flex-1 min-h-full text-left  double-space-top triple-space-bottom">
+                            </div>
+
+                            {showCtaDescription ? (
+                                <div className="md:w-[var(--cta-width)] "
+                                     style={{"--cta-width": CtaWidth + "px"} as React.CSSProperties}>
+                                    <TypographyRichTextExt
+                                        propName="ctaDescription"
+                                        value={ctaDescription}
+                                        placeholder="Description"
+                                    />
+                                    <div className="flex-1 min-h-full text-left  double-space-top triple-space-bottom">
+                                        <div className="flex justify-end lg:justify-end">
+                                            <div
+                                                className="flex w-full justify-between items-center gap-3 rounded-full bg-neutral-500 p-1 pl-4 text-sm text-white">
+                                                <TypographyRichTextExt
+                                                    propName="ctaLabel"
+                                                    value={ctaLabel}
+                                                    placeholder="CTA Label"
+                                                />
+                                                <div
+                                                    className={
+                                                        'rounded-full px-4 py-2 font-medium text-white ' +
+                                                        buttonColor?.color +
+                                                        ' ' +
+                                                        buttonColor?.classNameOutline +
+                                                        ' ' +
+                                                        buttonColor?.classNameSolid
+                                                    }
+                                                >
+                                                    <TypographyRichTextExt
+                                                        propName="ctaText"
+                                                        value={ctaText}
+                                                        placeholder="CTA Text"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div/>
+                            )}
+                            {!showCtaDescription ? (
+                                <div className="md:w-[var(--cta-width)] self-end"
+                                     style={{"--cta-width": CtaWidth + "px"} as React.CSSProperties}>
                                     <div className="flex justify-end lg:justify-end">
-                                        <div className="flex items-center gap-3 rounded-full bg-neutral-500 p-1 pl-4 text-sm text-white">
+                                        <div
+                                            className="flex w-full justify-between items-center gap-3 rounded-full bg-neutral-500 p-1 pl-4 text-sm text-white">
                                             <TypographyRichTextExt
                                                 propName="ctaLabel"
                                                 value={ctaLabel}
@@ -100,63 +142,32 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        ) : (
-                            <div />
-                        )}
-                        {!showCtaDescription ? (
-                            <div className="flex-1 min-h-full text-left triple-space-bottom">
-                                <div className="flex justify-end lg:justify-end">
-                                    <div className="flex items-center gap-3 rounded-full bg-neutral-500 p-1 pl-4 text-sm text-white">
-                                        <TypographyRichTextExt
-                                            propName="ctaLabel"
-                                            value={ctaLabel}
-                                            placeholder="CTA Label"
-                                        />
-                                        <div
-                                            className={
-                                                'rounded-full px-4 py-2 font-medium text-white ' +
-                                                buttonColor?.color +
-                                                ' ' +
-                                                buttonColor?.classNameOutline +
-                                                ' ' +
-                                                buttonColor?.classNameSolid
-                                            }
-                                        >
-                                            <TypographyRichTextExt
-                                                propName="ctaText"
-                                                value={ctaText}
-                                                placeholder="CTA Text"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>) : (<div></div>)}
+                                </div>) : (<div></div>)}
+                        </div>
+
+
                     </div>
-
-
-
-                </div>
-                ): (
-                    <div className="flex flex-col items-center justify-center">
+                ) : (
+                    <div className="flex flex-col items-center justify-center start-padding end-padding pb-[90px]">
                         <div className="max-w-[900px] max-h-[500px] ">
-                            <div className="max-w-[500px] single-space-bottom">
+                            <div className="max-w-[500px] mb-[9px]">
                                 <TypographyRichTextExt
                                     propName="kicker"
                                     value={kicker}
                                     placeholder="Kicker"
                                 />
                             </div>
-                            <div className="double-space-bottom">
-                            <TypographyRichTextExt
-                                propName="title"
-                                value={title}
-                                placeholder="Title"
-                            />
+                            <div className="w-[var(--title-width)] mb-[54px]"
+                                 style={{"--title-width": titleWidth + "px"} as React.CSSProperties}>
+                                <TypographyRichTextExt
+                                    propName="title"
+                                    value={title}
+                                    placeholder="Title"
+                                />
                             </div>
                             {showCtaDescription ? (
-                                <div className="flex-1 text-left triple-space-bottom">
+                                <div className="w-[var(--cta-width)] self-end"
+                                     style={{"--cta-width": CtaWidth + "px"} as React.CSSProperties}>
                                     <TypographyRichTextExt
                                         propName="ctaDescription"
                                         value={ctaDescription}
@@ -164,7 +175,7 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                     />
                                 </div>
                             ) : (
-                                <div />
+                                <div/>
                             )}
 
                         </div>
@@ -173,16 +184,17 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                 )}
 
 
-                <HorizontalCardsScroller>
+                <HorizontalCardsScroller backgroundColor={backgroundColor}>
                     <Repeater
                         propName="cards"
                         items={cards}
                         renderItemWrapper={(item) => (
-                            <div data-scroll-card className="shrink-0">
+                            <div data-scroll-card className="shrink-0 data-scroll-card">
                                 {item}
                             </div>
                         )}
                     />
+                    <div className="md:min-w-[200px]"></div>
                 </HorizontalCardsScroller>
             </div>
         </section>
@@ -255,10 +267,24 @@ HorizontalCards.schema = {
                     name: 'showCtaDescription',
                     label: 'Show CTA Description',
                     type: types.SideEditPropType.Boolean,
-                    show: "showCta"
                 },
+                {
+                    name: "CtaWidth",
+                    label: "Width CTA",
+                    type: types.SideEditPropType.Number
+                }
             ],
         },
+        {
+            groupName: 'Card',
+            props: [
+                {
+                    name: "titleWidth",
+                    label: "Title Width",
+                    type: types.SideEditPropType.Number,
+                }
+            ]
+        }
     ],
     repeaterItems: [
         {

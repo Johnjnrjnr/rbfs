@@ -1,4 +1,4 @@
-import { Image, RichText, Text, types } from 'react-bricks/rsc'
+import { File, RichText, Text, types } from 'react-bricks/rsc'
 import {black} from "next/dist/lib/picocolors";
 import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
@@ -15,7 +15,7 @@ interface HomeHeaderProps {
     title: types.TextValue
     text: types.TextValue
     highlightTextColor: { color: string; className: string }
-    background: types.IImageSource
+    backgroundVideo: types.IFileSource
     width: number
     typography: string
 }
@@ -27,37 +27,52 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                                                     highlightTextColor = highlightTextColors.LIME.value,
                                                     title,
                                                     text,
-                                                    background,
+                                                    backgroundVideo,
                                                     width,
                                                     typography
                                                 }) => {
     return (
-        <div className="dark:bg-gray-900 h-screen"
-             style={{
-                 display: "flex",
-                 backgroundImage: background?.src
-                     ? `url(${background.src})`
-                     : undefined,
-                 backgroundSize: 'cover',
-                 backgroundPosition: 'center',
-                 verticalAlign: "bottom",
-                 justifyContent: "flex-end",
-                 flexDirection: "column"
+        <section className="home-header-video">
+            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+            <div className="home-header-video__bg">
+                <File
+                    propName="backgroundVideo"
+                    source={backgroundVideo}
+                    allowedExtensions={['.mp4', '.webm', '.mov']}
+                    renderBlock={(file) =>
+                        file ? (
+                            <video
+                                src={file.url}
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
+                                controls={false}
+                                className="home-header-video__media"
+                            />
+                        ) : (
+                            <div className="home-header-video__fallback">
+                                Click to upload background video
+                            </div>
+                        )
+                    }
+                />
+            </div>
 
-             }}>
+            <div className="home-header-video__overlay"/>
+
             <div
-                className={highlightTextColor.className + ' ' + typography}
-                style={{
-                    width: `${width}px`,
-                    marginLeft: "10rem",
-                    marginBottom: "10rem"
-                }}
-
+                className={
+                    'home-header-video__content ' +
+                    highlightTextColor.className +
+                    ' ' +
+                    typography
+                }
             >
                 <TypographyRichTextExt propName="title" value={title}/>
                 <TypographyRichTextExt propName="text" value={text}/>
             </div>
-        </div>
+        </section>
     )
 }
 
@@ -88,12 +103,6 @@ HomeHeader.schema = {
                     { value: 'small', label: 'Small Padding' },
                 ],
             },
-        },
-        {
-
-            name: 'background',
-            label: 'Background Image',
-            type: types.SideEditPropType.Image,
         },
         {
             name: 'width',

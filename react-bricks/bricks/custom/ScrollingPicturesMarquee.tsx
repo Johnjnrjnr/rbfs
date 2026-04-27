@@ -7,7 +7,6 @@ import {
 import { RegisterComponent } from 'react-bricks/rsc/client'
 import ScrollingPicturesMarqueeClient from './ScrollingPicturesMarquee.client'
 import type { MarqueeImageProps } from './MarqueeImage'
-import {backgroundColorsEditProps, textGradientEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 
 interface ScrollingPicturesMarqueeProps {
     images?: types.RepeaterItems<MarqueeImageProps>
@@ -68,6 +67,7 @@ export default wrapClientComponent<ScrollingPicturesMarqueeProps>({
 
         return (
             <div className="relative">
+
                 {showEditorImages ? (
                     <div className="mb-6 rounded-2xl border border-dashed border-gray-300 p-4">
                         <p className="mb-3 text-sm text-gray-500">Manage marquee images</p>
