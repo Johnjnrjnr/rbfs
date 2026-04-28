@@ -92,6 +92,11 @@ export default async function Layout(props: {
 
   return (
     <html lang={params.lang} suppressHydrationWarning>
+      <head>
+
+        <title>Funkensprung</title>
+
+      </head>
       <body className={`bg-white dark:bg-[#0d1117]`}>
         <ThemeProvider
           attribute="class"

@@ -133,7 +133,7 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
         </div>
 
         {hasIcon ? (
-          <div className="shrink-0">
+          <div className="shrink-0 mr-[20px]">
             <Image
               propName="icon"
               source={icon}

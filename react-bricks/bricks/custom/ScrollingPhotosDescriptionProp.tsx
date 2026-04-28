@@ -41,7 +41,6 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
     return (
 
         <div className="scrolling-photos-container bg-[#F5F5F7] block-container pl-[54px]">
-            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
 
                 <div className="md:ml-[54px]+">
                     <div className="start-padding end-padding">

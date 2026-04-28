@@ -13,7 +13,7 @@ const FullPageVideo: types.Brick<FullPageVideoProps> = ({ video, backgroundColor
     return (
         <section className={"relative overflow-hidden " + backgroundColor?.className}
         >
-            <div className="m-[20px] md:w-full start-padding end-padding justify-self-center mb-[270px]"
+            <div className="m-[20px] md:max-w-[var(--width-video)] start-margin end-margin justify-self-center items-center mb-[270px]"
                 style={{"--width-video": videoWidth + "px"} as React.CSSProperties}>
             <File
                 propName="video"

@@ -45,7 +45,7 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
 
     return (
         <div className="background-box pt-[90px] pl-[126px] pr-[126px] pb-[90px] end-margin ml-[256px] quad-space-bottom quad-space-top  ">
-            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+
             <div className="flex flex-row justify-between mb-[36px] md:mb-[36px]">
                 <div className=" md:w-[var(--title-width)]"
                 style={{"--title-width": titleWidth + "px"} as React.CSSProperties}

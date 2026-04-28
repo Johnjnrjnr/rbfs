@@ -33,7 +33,7 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                                                 }) => {
     return (
         <section className="home-header-video">
-            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+
             <div className="home-header-video__bg">
                 <File
                     propName="backgroundVideo"

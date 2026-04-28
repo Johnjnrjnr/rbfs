@@ -30,7 +30,7 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
     return (
         <section className={"relative text-white start-padding end-padding " + backgroundColor?.className}>
 
-            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+
             <div className="relative ">
                 <div
                     className="pointer-events-none absolute left-0 top-0 h-full w-full md: w-[var(--full-width)] "

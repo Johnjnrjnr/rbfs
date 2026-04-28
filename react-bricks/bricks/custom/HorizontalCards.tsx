@@ -51,7 +51,7 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                 backgroundColor?.className
             }
         >
-            <link rel="stylesheet" href="https://use.typekit.net/wzt4dbz.css"/>
+
             <div className=" pt-[80px] md:pt-[180px] pb-[72px]">
 
                 {showCta ? (<div className="mb-[90px] flex flex-col gap-8 lg:mb-14 start-padding end-padding ">
