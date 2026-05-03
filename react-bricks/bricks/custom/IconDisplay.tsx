@@ -10,7 +10,6 @@ import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors"
 export interface IconDisplayProps {
     image?: types.IImageSource,
     pictureWidth: number,
-    title: string,
 }
 
 //=============================
@@ -18,8 +17,7 @@ export interface IconDisplayProps {
 //=============================
 const IconDisplay: types.Brick<IconDisplayProps> = ({
                                                             image,
-                                                            pictureWidth,
-    title
+                                                            pictureWidth
                                                         }) => {
 
 

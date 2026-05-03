@@ -51,18 +51,20 @@ export default wrapClientComponent<FullPageVideoScrollBrickProps>({
         scrollSpeed,
         smoothness
                       }) => (
-        <File
-            propName="video"
-            source={video}
-            allowedExtensions={['.mp4']}
-            renderBlock={(file) => (
-                <FullPageVideoScrollClient
-                    videoUrl={file?.url}
-                    overlayOpacity={overlayOpacity}
-                    scrollSpeed = {scrollSpeed}
-                />
-            )}
-        />
+                          <div className="hidden md:block">
+                                <File
+                                    propName="video"
+                                    source={video}
+                                    allowedExtensions={['.mp4']}
+                                    renderBlock={(file) => (
+                                        <FullPageVideoScrollClient
+                                            videoUrl={file?.url}
+                                            overlayOpacity={overlayOpacity}
+                                            scrollSpeed = {scrollSpeed}
+                                        />
+                                    )}
+                                />
+                          </div>
     ),
     RegisterComponent,
     schema,

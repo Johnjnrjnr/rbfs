@@ -40,9 +40,9 @@ const ScrollingPhotosDescriptionProp: types.Brick<ScrollingPhotosDescription> = 
 
     return (
 
-        <div className="scrolling-photos-container bg-[#F5F5F7] block-container pl-[54px]">
+        <div className="scrolling-photos-container bg-[#F5F5F7] block-container pl-[15px] md:pl-[54px]">
 
-                <div className="md:ml-[54px]+">
+                <div className="md:ml-[54px]">
                     <div className="start-padding end-padding">
                         <div className="md:w-[var(--title-width)] single-space-bottom"
                              style={{"--title-width": titleWidth +"px"} as React.CSSProperties}>

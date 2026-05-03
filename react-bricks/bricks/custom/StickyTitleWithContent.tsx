@@ -1,7 +1,8 @@
-import { Repeater, types } from 'react-bricks/rsc'
+import { Repeater, isAdmin, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
 import {backgroundColorsEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import React from "react";
+import StepScrollBLockClient from "@/react-bricks/bricks/custom/StepScrollBLockClient";
 
 interface StickyOverlayTitleProps {
     title: types.TextValue
@@ -27,8 +28,10 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                                                                       leftOffset,
     backgroundColor
                                                                   }) => {
+
+    const admin = isAdmin();
     return (
-        <section className={"relative text-white start-padding end-padding " + backgroundColor?.className}>
+        <section className={"relative text-white start-padding end-padding  " + backgroundColor?.className}>
 
 
             <div className="relative ">
@@ -58,21 +61,35 @@ const StickyOverlayTitle: types.Brick<StickyOverlayTitleProps> = ({
                 </div>
 
                 <div
-                    className="relative z-10 w-full"
+                    className="relative z-10 w-full overflow-full"
                     style={{
                         paddingTop: `${contentTopOffset}px`,
-                        gap: "270px"
                     }}
-                >
+                >{ admin ? (
                     <Repeater
                         propName="items"
                         items={items}
                         renderItemWrapper={(item) => (
-                            <div className="pb-[270px]">
+                            <div className="">
                                 {item}
                             </div>
                         )}
                     />
+
+            ) : (
+                    <StepScrollBLockClient>
+                        <Repeater
+                            propName="items"
+                            items={items}
+                            renderItemWrapper={(item) => (
+                                <div className="w-full">
+                                    {item}
+                                </div>
+                            )}
+                        />
+                    </StepScrollBLockClient>
+                )
+                }
                 </div>
             </div>
         </section>

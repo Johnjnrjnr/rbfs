@@ -233,6 +233,16 @@
   height: 100%;
 }
 
+.snap-container {
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section {
+  height: 100vh;
+  scroll-snap-align: start;
+}
+
 .home-header-video__media,
 .home-header-video__fallback {
   width: 100%;
@@ -262,10 +272,8 @@
 
 .home-header-video__content {
   position: relative;
+  width: 100%;
   z-index: 2;
-  width: 720px;
-  margin-left: 202px;
-  margin-bottom: 10rem;
 }
 
 
@@ -441,16 +449,23 @@
     letter-spacing: -1px;
   }
 
+  .display-4 {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 36px;
+    letter-spacing: -1px;
+  }
+
   .header-1 {
     font-weight: 600;
-    font-size: 25px;
-    line-height: 30px;
-    letter-spacing: -1px;
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: -0.5px;
   }
 
   .header-2 {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 25px;
     letter-spacing: -0.5px;
   }
@@ -458,29 +473,29 @@
   .header-3 {
     font-weight: 500;
     font-size: 17px;
-    line-height: 20px;
+    line-height: 25px;
     letter-spacing: -0.5px;
   }
 
   .header-4 {
     font-weight: 700;
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.4px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
   }
 
   .text-1 {
     font-weight: 500;
-    font-size: 20px;
-    line-height: 25px;
-    letter-spacing: 0.2px;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.5px;
   }
 
   .text-2 {
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 22px;
-    letter-spacing: 0.15px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
   }
 
 
@@ -552,6 +567,8 @@
   .verticalImage {
     display: flex;
     flex-direction: row;
+    justify-self: center;
+    align-self: center;
   }
 
   .verticalImageDisplay {
@@ -564,7 +581,6 @@
   }
 
   .verticalImageContent {
-
   }
 }
 

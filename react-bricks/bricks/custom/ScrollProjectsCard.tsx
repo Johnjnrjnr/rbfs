@@ -114,104 +114,111 @@ const ScrollProjectCard: types.Brick<ScrollProjectCardProps> = ({
     : undefined
 
   return (
-    <article
-      {...rest}
-      className={"w-[380px] rounded-[28px] p-5 md:w-[var(--card-width)] " + backgroundColor?.className}
-      style={{
-        "--card-width": cardWidth,
-      } as React.CSSProperties}
-    >
-      {mediaBlock}
+      <article
+          {...rest}
+          className={
+              'w-[380px] shrink-0 h-full rounded-[28px] p-5 md:w-[var(--card-width)] flex flex-col ' +
+              backgroundColor?.className
+          }
+          style={
+            {
+              '--card-width': cardWidth,
+            } as React.CSSProperties
+          }
+      >
+        {mediaBlock}
 
-      <div className="mb-6 flex h-full items-start justify-between gap-4 pl-[20px] pr[20px]">
-        <div className="min-w-0 flex-1">
-          <TypographyRichTextExt
-            propName="title"
-            value={title}
-            placeholder="Project title"
-          />
-        </div>
-
-        {hasIcon ? (
-          <div className="shrink-0 mr-[20px]">
-            <Image
-              propName="icon"
-              source={icon}
-              alt="Icon"
-              maxWidth={iconSize}
-              imageStyle={{
-                width: `${iconSize}px`,
-                height: `${iconSize}px`,
-                display: 'block',
-                objectFit: 'cover',
-                borderRadius: iconRounded ? '9999px' : '0px',
-              }}
-            />
-          </div>
-        ) : null}
-      </div>
-
-      <div className="mb-6 grid grid-row-rev md:grid-cols-[1fr_auto] gap-6 pl-[20px] pr-[20px]">
-        <div>
-          <TypographyRichTextExt
-            propName="description"
-            value={description}
-            placeholder="Project description"
-          />
-        </div>
-
-        <div className="min-w-[110px] text-right">
-          <div className="mb-4">
+        <div className="flex flex-1 flex-col">
+        <div className="mb-6 flex items-start justify-between gap-4 pl-[20px] pr[20px]">
+          <div className="min-w-0 flex-1">
             <TypographyRichTextExt
-              propName="dateLabel"
-              value={dateLabel}
-              placeholder="Date label"
-            />
-            <TypographyRichTextExt
-              propName="dateValue"
-              value={dateValue}
-              placeholder="Date"
+              propName="title"
+              value={title}
+              placeholder="Project title"
             />
           </div>
 
+          {hasIcon ? (
+            <div className="shrink-0 mr-[20px]">
+              <Image
+                propName="icon"
+                source={icon}
+                alt="Icon"
+                maxWidth={iconSize}
+                imageStyle={{
+                  width: `${iconSize}px`,
+                  height: `${iconSize}px`,
+                  display: 'block',
+                  objectFit: 'cover',
+                  borderRadius: iconRounded ? '9999px' : '0px',
+                }}
+              />
+            </div>
+          ) : null}
+        </div>
+
+        <div className="mb-6 h-full grid grid-row-rev md:grid-cols-[1fr_auto] gap-6 pl-[20px] pr-[20px]">
           <div>
             <TypographyRichTextExt
-              propName="leadLabel"
-              value={leadLabel}
-              placeholder="Lead label"
-            />
-            <TypographyRichTextExt
-              propName="leadValue"
-              value={leadValue}
-              placeholder="Lead name"
+              propName="description"
+              value={description}
+              placeholder="Project description"
             />
           </div>
-        </div>
-      </div>
 
-      {showButtonRow ? (
-          <div className=" justify-self-end self-end items-end align-self-end">
-            <div className="flex justify-self-end-safe gap-3 ml-[20px]">
-              <div className="rounded-full grid grid-cols-2 gap-10 justify-between content-center bg-neutral-500 pl-4 pr-1 py-1 text-white">
-                <div className="flex flex-col justify-center ">
-                  <TypographyRichTextExt
-                    propName="buttonText"
-                    value={buttonText}
-                    placeholder="Button text"
-                  />
-                </div>
+          <div className="min-w-[110px] text-right">
+            <div className="mb-4">
+              <TypographyRichTextExt
+                propName="dateLabel"
+                value={dateLabel}
+                placeholder="Date label"
+              />
+              <TypographyRichTextExt
+                propName="dateValue"
+                value={dateValue}
+                placeholder="Date"
+              />
+            </div>
 
-                <div className="rounded-full bg-[#0400FF] px-4 py-2 text-white align-middle">
-                  <TypographyRichTextExt
-                      propName="buttonLinkText"
-                      value={buttonLinkText}
-                      placeholder="Button link text"
-                  />
-                </div>
-              </div>
+            <div>
+              <TypographyRichTextExt
+                propName="leadLabel"
+                value={leadLabel}
+                placeholder="Lead label"
+              />
+              <TypographyRichTextExt
+                propName="leadValue"
+                value={leadValue}
+                placeholder="Lead name"
+              />
             </div>
           </div>
-      ) : null}
+        </div>
+
+          {showButtonRow ? (
+              <div className="mt-auto ml-auto pt-4">
+                <div className="flex gap-3">
+                  <div className="rounded-full grid grid-cols-2 gap-10 justify-between content-center bg-neutral-500 pl-4 pr-1 py-1 text-white">
+                    <div className="flex flex-col justify-center">
+                      <TypographyRichTextExt
+                          propName="buttonText"
+                          value={buttonText}
+                          placeholder="Button text"
+                      />
+                    </div>
+
+                    <div className="rounded-full bg-[#0400FF] px-4 py-2 text-white align-middle">
+                      <TypographyRichTextExt
+                          propName="buttonLinkText"
+                          value={buttonLinkText}
+                          placeholder="Button link text"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+          ) : null}
+      </div>
     </article>
   )
 }

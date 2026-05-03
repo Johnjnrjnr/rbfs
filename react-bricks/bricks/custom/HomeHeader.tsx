@@ -4,6 +4,7 @@ import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/Layo
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
 import { typographySideEditProp } from '@/react-bricks/bricks/react-bricks-ui/typogrophy'
 import TypographyRichTextExt from "@/react-bricks/components/TypographyRichTextExt";
+import IconDisplay from "@/react-bricks/bricks/custom/IconDisplay";
 
 
 //=============================
@@ -14,8 +15,12 @@ type Padding = 'big' | 'small'
 interface HomeHeaderProps {
     title: types.TextValue
     text: types.TextValue
+    icon: types.IImageSource
     highlightTextColor: { color: string; className: string }
     backgroundVideo: types.IFileSource
+    hasIcon: boolean
+    hasKicker: boolean
+    contentCenter: boolean
     width: number
     typography: string
 }
@@ -27,8 +32,12 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                                                     highlightTextColor = highlightTextColors.LIME.value,
                                                     title,
                                                     text,
+    icon,
                                                     backgroundVideo,
                                                     width,
+    hasIcon,
+    hasKicker,
+    contentCenter,
                                                     typography
                                                 }) => {
     return (
@@ -63,14 +72,23 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
 
             <div
                 className={
-                    'home-header-video__content ' +
-                    highlightTextColor.className +
-                    ' ' +
-                    typography
+                    "home-header-video__content mb-[10rem] " + typography + " " + highlightTextColor.className +
+                    (contentCenter ? " flex flex-col items-center text-center m-0 " : " ml-[202px] ")
                 }
             >
-                <TypographyRichTextExt propName="title" value={title}/>
-                <TypographyRichTextExt propName="text" value={text}/>
+                <div style={{ width: width + "px"}}>
+                    { hasIcon ? (
+                        <div className={contentCenter ? "justify-items-center" : ""}>
+                            <IconDisplay pictureWidth={50} image={icon}/>
+
+                        </div>
+
+                    ) : null}
+                    { hasKicker ? (
+                        <TypographyRichTextExt propName="title" value={title}/>
+                    ): null}
+                    <TypographyRichTextExt propName="text" value={text}/>
+                </div>
             </div>
         </section>
     )
@@ -92,17 +110,21 @@ HomeHeader.schema = {
     }),
     sideEditProps: [
         typographySideEditProp,
+
         {
-            name: 'padding',
-            label: 'Padding',
-            type: types.SideEditPropType.Select,
-            selectOptions: {
-                display: types.OptionsDisplay.Select,
-                options: [
-                    { value: 'big', label: 'Big Padding' },
-                    { value: 'small', label: 'Small Padding' },
-                ],
-            },
+          name: "hasIcon",
+          label: 'Icon',
+          type: types.SideEditPropType.Boolean
+        },
+        {
+          name:"hasKicker",
+          label: "Kicker",
+          type: types.SideEditPropType.Boolean
+        },
+        {
+          name: "contentCenter",
+          label: "Center Content",
+          type: types.SideEditPropType.Boolean
         },
         {
             name: 'width',

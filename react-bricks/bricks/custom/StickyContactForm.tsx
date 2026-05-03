@@ -39,7 +39,7 @@ const StickyContactForm: types.Brick<StickyContactFormProps> = ({
                                                                 }) => {
     return (
         <section className="bg-[#f3f3f3] w-full pt-[108px] pb-[108px]">
-            <div className="mx-auto grid w-[1020px] justify-self-center gap-10 lg:grid-cols-[420px_1fr]">
+            <div className="mx-auto grid md:w-[1020px] justify-self-center gap-10 lg:grid-cols-[420px_1fr]">
                 <div
                     style={{
                         width: `${leftColumnWidth}px`,

@@ -16,7 +16,7 @@ interface HeaderProps extends LayoutProps{
 const Header: types.Brick<HeaderProps> = ({label1, label2, label3, ctaText, avatar}) => {
     return (
         <HeaderProvider>
-        <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6">
+        <div className="hidden md:flex fixed top-6 left-0 right-0 z-50 justify-center px-6">
             <div className="flex items-center justify-between w-full start-margin end-margin h-[50px] px-8 rounded-full bg-black/50 shadow-2xl">
 
                 {/* LOGO SECTION */}
@@ -26,13 +26,13 @@ const Header: types.Brick<HeaderProps> = ({label1, label2, label3, ctaText, avat
                 </div>
 
                 {/* NAVIGATION LINKS */}
-                    <Link href="google.com" className="text-white hover:opacity-70 transition-opacity">
+                    <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label1" value={label1} placeholder="Link 1" />
                     </Link>
-                    <Link href="google.com" className="text-white hover:opacity-70 transition-opacity">
+                    <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label2" value={label2} placeholder="Link 2" />
                     </Link>
-                    <Link href="google.com" className="text-white hover:opacity-70 transition-opacity">
+                    <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label3" value={label3} placeholder="Link 3" />
                     </Link>
 

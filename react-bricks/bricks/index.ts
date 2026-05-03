@@ -27,6 +27,7 @@ import ContactFormOption from "@/react-bricks/bricks/custom/ContactFormOption";
 import ContactFormGroup from "@/react-bricks/bricks/custom/ContactFormGroup";
 import ContactFormTextPair from "@/react-bricks/bricks/custom/ContactFormTextPair";
 import ContactFormTextarea from "@/react-bricks/bricks/custom/ContactFormTextarea";
+import CardGrid from "@/react-bricks/bricks/custom/CardGrid";
 
 const bricks: types.Theme[] = [
   reactBricksUITheme, // React Bricks UI
@@ -35,12 +36,8 @@ const bricks: types.Theme[] = [
     categories: [
       {
         categoryName: 'Custom bricks',
-        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft, StickyTitleWithContent, ScrollCard, ScrollVideoCard, scrollProjectsCard, HorizontalCards, ScrollingPicturesMarquee, MarqueeImage,StickyContactForm, ContactFormOption,ContactFormGroup, ContactFormTextPair, ContactFormTextarea], // Custom Bricks
+        bricks: [HeroUnit, Pokemon, HomeHeader, ScrollingPhotosDescriptionProp, VerticalImage, VerticalVideo, PictureIconArrayProp, IconDisplay, FullPageVideo, FullPageVideoScroll, ImageRightTextLeft, StickyTitleWithContent, ScrollCard, ScrollVideoCard, scrollProjectsCard, HorizontalCards, ScrollingPicturesMarquee, MarqueeImage,StickyContactForm, ContactFormOption,ContactFormGroup, ContactFormTextPair, ContactFormTextarea, Header, CardGrid],
       },
-      {
-        categoryName: "Layout",
-        bricks: [Header]
-      }
     ],
   },
 ]

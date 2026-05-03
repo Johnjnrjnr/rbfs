@@ -22,7 +22,7 @@ const ImageRightTextLeft: types.Brick<ImageRightTextLeftProps> = ({
                                                                       background,
                                                                   }) => {
     return (
-        <section className={`${background.className}`}>
+        <section className={`${background.className} w-full`}>
             <div className="flex items-center justify-between flex-col-rev-mobile">
                 <div
                     className="flex flex-col flex-end-mobile md:w-[var(--text-width)]"

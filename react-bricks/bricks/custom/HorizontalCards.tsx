@@ -12,6 +12,7 @@ import {
 interface HorizontalCardsProps {
     kicker: types.TextValue
     title: types.TextValue
+    showTitle: boolean
     ctaLabel: types.TextValue
     ctaText: types.TextValue
     ctaDescription: types.TextValue
@@ -33,6 +34,7 @@ interface HorizontalCardsProps {
 const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                                                 kicker,
                                                                 title,
+    showTitle,
                                                                 ctaLabel,
                                                                 ctaText,
                                                                 ctaDescription,
@@ -110,9 +112,7 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                         </div>
                                     </div>
                                 </div>
-                            ) : (
-                                <div/>
-                            )}
+                            ) : null}
                             {!showCtaDescription ? (
                                 <div className="md:w-[var(--cta-width)] self-end"
                                      style={{"--cta-width": CtaWidth + "px"} as React.CSSProperties}>
@@ -142,12 +142,12 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                             </div>
                                         </div>
                                     </div>
-                                </div>) : (<div></div>)}
+                                </div>) : null}
                         </div>
 
 
                     </div>
-                ) : (
+                ) : showTitle ? (
                     <div className="flex flex-col items-center justify-center start-padding end-padding pb-[90px]">
                         <div className="max-w-[900px] max-h-[500px] ">
                             <div className="max-w-[500px] mb-[9px]">
@@ -174,14 +174,12 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                         placeholder="Description"
                                     />
                                 </div>
-                            ) : (
-                                <div/>
-                            )}
+                            ) : null}
 
                         </div>
 
                     </div>
-                )}
+                ) : null}
 
 
                 <HorizontalCardsScroller backgroundColor={backgroundColor}>
@@ -254,6 +252,11 @@ HorizontalCards.schema = {
     sideEditProps: [
         backgroundColorsEditProps,
         buttonColorsEditProps,
+        {
+            name: "showTitle",
+            label: "Show Title",
+            type: types.SideEditPropType.Boolean
+        },
         {
             groupName: 'CTA',
             props: [

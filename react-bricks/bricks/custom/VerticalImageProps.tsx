@@ -21,9 +21,9 @@ const VerticalImage: types.Brick<VerticalImageProps> = ({
                                                             title,
                                                         }) => {
     return (
-        <span className="verticalImage min-w-[var(--box-width)] justify-between" style={{"--box-width": pictureWidth + "px"} as React.CSSProperties}>
-      <div className="verticalImageContent">
-        <div className="md:ml-[36px] double-space-top">
+        <span className="verticalImage md:min-w-[var(--box-width)] w-full justify-between" style={{"--box-width": pictureWidth + "px"} as React.CSSProperties}>
+      <div className="verticalImageContent ml-[10px] w-[200px] md:w-auto">
+        <div className="md:ml-[36px] double-space-top text-center md:text-left">
           <TypographyRichTextExt
               propName="kicker"
               value={kicker}
@@ -31,7 +31,7 @@ const VerticalImage: types.Brick<VerticalImageProps> = ({
           />
         </div>
 
-        <div className="md:ml-[36px] mr-[36px] mt-[9px]">
+        <div className=" text-center md:text-left md:ml-[36px] md:mr-[36px] mt-[9px]">
           <TypographyRichTextExt
               propName="title"
               value={title}
@@ -39,7 +39,7 @@ const VerticalImage: types.Brick<VerticalImageProps> = ({
           />
         </div>
 
-        <div className="rounded-full md:w-[155px] bg-[#0400FF] md:ml-[36px] mr-[36px] pt-[9px] pb-[9px] px-1 py-1 double-space-bottom single-space-top text-white align-middle">
+        <div className="rounded-full justify-self-center md:justify-self-start w-[150px] md:w-[155px] bg-[#0400FF] md:ml-[36px] md:mr-[36px] pt-[9px] pb-[9px] px-1 py-1 double-space-bottom single-space-top text-white align-middle">
           <TypographyRichTextExt
               propName="buttonLinkText"
               value={buttonLinkText}

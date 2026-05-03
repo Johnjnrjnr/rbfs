@@ -44,18 +44,19 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
 
 
     return (
-        <div className="background-box pt-[90px] pl-[126px] pr-[126px] pb-[90px] end-margin ml-[256px] quad-space-bottom quad-space-top  ">
+        <div className="background-box  pt-[90px] pl-[126px] pr-[126px] pb-[90px] start-padding end-padding md:ml-[256px]
+       " style={{backgroundColor: "#F5F5F7"}}>
 
-            <div className="flex flex-row justify-between mb-[36px] md:mb-[36px]">
-                <div className=" md:w-[var(--title-width)]"
+            <div className="flex flex-col md:flex-row justify-between mb-[36px] md:mb-[36px]">
+                <div className="w-[300px] md:w-[var(--title-width)] self-center justify-self-center"
                 style={{"--title-width": titleWidth + "px"} as React.CSSProperties}
                 >
                     <TypographyRichTextExt propName="title" value={title}/>
                 </div>
 
-                <div className="flex w-[180px] h-[50px] rounded-full bg-[#0400FF] align-self-end self-end items-center justify-center text-1 "><TypographyRichTextExt propName="ctaText" placeholder="Testemonials" value={ctaText}/></div>
+                <div className="hidden md:flex w-[180px] h-[50px] rounded-full bg-[#0400FF] align-self-end self-end items-center justify-center text-1 "><TypographyRichTextExt propName="ctaText" placeholder="Testemonials" value={ctaText}/></div>
             </div>
-            <div className="md:w-[var(--text-width)]"
+            <div className="w-[300px] md:w-[var(--text-width)] justify-self-center md:justify-self-start md:content-start"
                 style={{"--text-width": textWidth + "px"} as React.CSSProperties}>
                 <TypographyRichTextExt propName="description" value={description}/>
             </div>
