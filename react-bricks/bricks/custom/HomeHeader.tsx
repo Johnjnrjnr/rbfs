@@ -1,5 +1,4 @@
 import { File, RichText, Text, types } from 'react-bricks/rsc'
-import {black} from "next/dist/lib/picocolors";
 import {highlightTextEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 import {highlightTextColors} from "@/react-bricks/bricks/react-bricks-ui/colors";
 import { typographySideEditProp } from '@/react-bricks/bricks/react-bricks-ui/typogrophy'
@@ -76,7 +75,9 @@ const HomeHeader: types.Brick<HomeHeaderProps> = ({
                     (contentCenter ? " flex flex-col items-center text-center m-0 " : " ml-[202px] ")
                 }
             >
-                <div style={{ width: width + "px"}}>
+                <div
+                    className="md:w-[var(--width)]"
+                    style={{ "--width": width + "px"} as React.CSSProperties}>
                     { hasIcon ? (
                         <div className={contentCenter ? "justify-items-center" : ""}>
                             <IconDisplay pictureWidth={50} image={icon}/>

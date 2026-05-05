@@ -44,7 +44,7 @@ const PictureIconArrayProp: types.Brick<PictureIconArray> = ({
 
 
     return (
-        <div className="background-box  pt-[90px] pl-[126px] pr-[126px] pb-[90px] start-padding end-padding md:ml-[256px]
+        <div className="background-box  pt-[90px] pl-[126px] pr-[126px] pb-[90px] start-padding end-padding md:ml-[256px] md:mr-[256px] md:mt-[90px] md:mb-[90px]
        " style={{backgroundColor: "#F5F5F7"}}>
 
             <div className="flex flex-col md:flex-row justify-between mb-[36px] md:mb-[36px]">

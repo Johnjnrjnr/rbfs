@@ -1,12 +1,13 @@
 import { Image, Link, Repeater, Text, types } from 'react-bricks/rsc'
 import TypographyRichTextExt from '@/react-bricks/components/TypographyRichTextExt'
 import {ScrollCardProps} from "@/react-bricks/bricks/custom/ScrollCard";
+import {buttonColorsEditProps} from "@/react-bricks/bricks/react-bricks-ui/LayoutSideProps";
 
 interface CardGridProps {
     title: types.TextValue
     subtitle: types.TextValue
+    buttonColor: {color: string, classNameSolid: string, classNameOutline: string}
     primaryButtonText: types.TextValue
-    primaryButtonHref: string
     secondaryButtonText: types.TextValue
     secondaryButtonHref: string
     hasButtons: boolean
@@ -20,8 +21,8 @@ interface CardGridProps {
 const CardGrid: types.Brick<CardGridProps> = ({
                                                   title,
                                                   subtitle,
+    buttonColor,
                                                   primaryButtonText,
-                                                  primaryButtonHref,
                                                   secondaryButtonText,
                                                   secondaryButtonHref,
                                                   hasButtons,
@@ -34,31 +35,27 @@ const CardGrid: types.Brick<CardGridProps> = ({
     const gridCols = columns === 2 ? 'grid-cols-2' : 'grid-cols-3'
 
     return (
-        <section className="w-full bg-white start-padding end-padding quad-space-top">
+        <section className="w-full bg-white justify-items-center quad-space-top">
             {/* Header row */}
-            <div className="bg-[#F5F5F7]">
-            <div className="px-[90px] py-[126px]">
-            <div className="flex items-start  justify-between mb-10 gap-8">
-                <div className="">
+            <div className="bg-[#F5F5F7] lg:w-[1406px] md:mx-[0px] rounded-[33px] mx-[20px]">
+            <div className="lg:px-[90px] lg:py-[126px]  px-[20px] py-[100px] ">
+            <div className="flex flex-col md:flex-row items-start  justify-between ">
+                <div className="triple-space-bottom">
                     <TypographyRichTextExt propName="title" value={title} placeholder="Section title" />
-                    <div className="mt-3">
-                        <TypographyRichTextExt propName="subtitle" value={subtitle} placeholder="Subtitle text" />
-                    </div>
                 </div>
-
                 {hasButtons && (
-                    <div className="flex items-center gap-2 shrink-0 mt-1" >
+                    <div className="flex self-end triple-space-bottom items-center gap-2 shrink-0 mt-1" >
 
-                            <div>
-                                <Text
-                                    propName="primaryButtonText"
-                                    value={primaryButtonText}
-                                    placeholder="Button"
-                                    renderBlock={({ children }) => (
-                                        <span className=" rounded-full flex flex-row gap-[20px] bg-[#707470] p-[10px] pl-[20px] items-center text-white">
+                        <div className="item">
+                            <Text
+                                propName="primaryButtonText"
+                                value={primaryButtonText}
+                                placeholder="Button"
+                                renderBlock={({ children }) => (
+                                    <span className=" rounded-full flex flex-row gap-[20px] bg-[#707470] p-[10px] pl-[20px] items-center text-white">
                                         {children}
 
-                                            <Link href={secondaryButtonHref}>
+                                        <Link href={secondaryButtonHref}>
                                             <Text
                                                 propName="secondaryButtonText"
                                                 value={secondaryButtonText}
@@ -71,20 +68,25 @@ const CardGrid: types.Brick<CardGridProps> = ({
                                             />
                                             </Link>
                                     </span>
-                                    )}
-                                />
-                            </div>
+                                )}
+                            />
+                        </div>
                     </div>
                 )}
+
+
             </div>
 
+                <div className="mt-3 double-space-bottom">
+                    <TypographyRichTextExt propName="subtitle" value={subtitle} placeholder="Subtitle text" />
+                </div>
+
             {/* Cards grid */}
-            <div className={`grid ${gridCols} gap-4 mb-10`}>
+                <div className={`grid gap-[18px] mb-10 lg:${gridCols}`}>
                 <Repeater propName="cards" items={cards} />
             </div>
 
             {/* Bottom image */}
-            </div>
                 {hasImage && (
                     <div className="rounded-[28px] overflow-hidden w-full">
                         <Image
@@ -102,6 +104,7 @@ const CardGrid: types.Brick<CardGridProps> = ({
                         />
                     </div>
                 )}
+            </div>
             </div>
         </section>
     )
@@ -131,6 +134,7 @@ CardGrid.schema = {
         },
     ],
     sideEditProps: [
+        buttonColorsEditProps,
         {
             name: 'columns',
             label: 'Columns',

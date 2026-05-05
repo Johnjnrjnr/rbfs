@@ -5,6 +5,8 @@ export interface ScrollCardProps {
     eyebrow: types.TextValue
     title: types.TextValue
     text: types.TextValue
+    width: number
+    fullWidth: boolean
     hasPicture: boolean
     picture: types.IImageSource
     pictureWidth: number
@@ -20,6 +22,8 @@ const ScrollCard: types.Brick<ScrollCardProps> = ({
                                                       eyebrow,
                                                       title,
                                                       text,
+    width = 409,
+    fullWidth,
                                                       hasPicture,
                                                       picture,
                                                       pictureWidth,
@@ -55,16 +59,16 @@ const ScrollCard: types.Brick<ScrollCardProps> = ({
     ) : null
 
     const cardWidth = pictureResizesCard
-        ? `${Math.max(409, Math.min(pictureWidth, 800))}px`
-        : undefined
+        ? `${Math.max(200, Math.min(pictureWidth, 800))}px`
+        : `${Math.max(200, width)}px`
 
     return (
         <article
             {...rest}
-            className="w-[409px] shrink-0 rounded-[28px] h-full bg-white px-[38px] py-[34px]"
+            className="w-[var(--card-width)] shrink-0 rounded-[28px] h-full bg-white px-[38px] py-[34px]"
             style={{
-                width: cardWidth,
-            }}
+                "--card-width": fullWidth ? "100%" : cardWidth,
+            } as React.CSSProperties}
         >
             {picturePosition === 'top' && imageBlock}
 
@@ -122,6 +126,7 @@ ScrollCard.schema = {
                 ],
             },
         ],
+        width: 409,
         hasPicture: false,
         pictureWidth: 320,
         pictureRounded: true,
@@ -132,6 +137,16 @@ ScrollCard.schema = {
         pictureResizesCard: false,
     }),
     sideEditProps: [
+        {
+            name:"width",
+            label: "Card Width",
+            type: types.SideEditPropType.Number,
+        },
+        {
+            name:"fullWidth",
+            label: "Full Width",
+            type: types.SideEditPropType.Boolean,
+        },
         {
             groupName: 'Picture',
             props: [

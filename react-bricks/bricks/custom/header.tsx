@@ -20,10 +20,12 @@ const Header: types.Brick<HeaderProps> = ({label1, label2, label3, ctaText, avat
             <div className="flex items-center justify-between w-full start-margin end-margin h-[50px] px-8 rounded-full bg-black/50 shadow-2xl">
 
                 {/* LOGO SECTION */}
+                <Link href="/home">
                 <div className="flex flex-col leading-none text-white">
                     <div className="header-3 italic ml-[70px] ">sprung</div>
                     <div className="header-3 italic -mt-4">funken</div>
                 </div>
+                </Link>
 
                 {/* NAVIGATION LINKS */}
                     <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
@@ -32,7 +34,7 @@ const Header: types.Brick<HeaderProps> = ({label1, label2, label3, ctaText, avat
                     <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label2" value={label2} placeholder="Link 2" />
                     </Link>
-                    <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
+                    <Link href="/Socialmedia" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label3" value={label3} placeholder="Link 3" />
                     </Link>
 
