@@ -3,6 +3,7 @@ import { RegisterComponent } from 'react-bricks/rsc/client'
 import FullPageVideoScrollClient, {
     FullPageVideoScrollProps,
 } from './FullPageVideoScrollClient'
+import React from "react";
 
 interface FullPageVideoScrollBrickProps extends FullPageVideoScrollProps {
     video: types.IFileSource
@@ -51,19 +52,26 @@ export default wrapClientComponent<FullPageVideoScrollBrickProps>({
         scrollSpeed,
         smoothness
                       }) => (
-                          <div className="hidden md:block">
-                                <File
-                                    propName="video"
-                                    source={video}
-                                    allowedExtensions={['.mp4']}
-                                    renderBlock={(file) => (
-                                        <FullPageVideoScrollClient
-                                            videoUrl={file?.url}
-                                            overlayOpacity={overlayOpacity}
-                                            scrollSpeed = {scrollSpeed}
-                                        />
-                                    )}
-                                />
+                          <div className="">
+
+                              <File
+                                  propName="video"
+                                  source={video}
+                                  allowedExtensions={['.mp4']}
+                                  renderBlock={(file) =>
+                                      file ? (
+                                          <FullPageVideoScrollClient
+                                              videoUrl={video?.url}
+                                              overlayOpacity={overlayOpacity}
+                                              scrollSpeed = {scrollSpeed}
+                                          />
+                                      ) : (
+                                          <div className="absolute inset-0 flex items-center justify-center text-white">
+                                              No video uploaded yet.
+                                          </div>
+                                      )
+                                  }
+                              />
                           </div>
     ),
     RegisterComponent,

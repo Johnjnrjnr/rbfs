@@ -157,7 +157,7 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                     placeholder="Kicker"
                                 />
                             </div>
-                            <div className="w-[var(--title-width)] mb-[54px]"
+                            <div className="md:w-[var(--title-width)] mb-[54px]"
                                  style={{"--title-width": titleWidth + "px"} as React.CSSProperties}>
                                 <TypographyRichTextExt
                                     propName="title"
@@ -166,7 +166,7 @@ const HorizontalCards: types.Brick<HorizontalCardsProps> = ({
                                 />
                             </div>
                             {showCtaDescription ? (
-                                <div className="w-[var(--cta-width)] self-end"
+                                <div className=" md:w-[var(--cta-width)] self-end"
                                      style={{"--cta-width": CtaWidth + "px"} as React.CSSProperties}>
                                     <TypographyRichTextExt
                                         propName="ctaDescription"

@@ -34,7 +34,7 @@ const Header: types.Brick<HeaderProps> = ({label1, label2, label3, ctaText, avat
                     <Link href="/Webauftritte" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label2" value={label2} placeholder="Link 2" />
                     </Link>
-                    <Link href="/Socialmedia" className="text-white hover:opacity-70 transition-opacity">
+                    <Link href="/socialmedia" className="text-white hover:opacity-70 transition-opacity">
                         <Text propName="label3" value={label3} placeholder="Link 3" />
                     </Link>
 
